@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.vlsidlyarevich</groupId>
-    <artifactId>GMailQuickStart</artifactId>
+    <artifactId>GMailMalesAnalyser</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
