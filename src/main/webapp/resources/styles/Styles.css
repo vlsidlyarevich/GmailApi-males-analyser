@@ -1,28 +1,61 @@
-body{
+body {
     background-image: url("#{resource['images/wood_pattern.png']}");
     padding: 0;
     margin: 0;
     text-align: center;
 }
-.wrapper{
+
+.wrapper {
     min-width: 500px;
     min-height: 500px;
     height: 650px;
-    width:45%;
+    width: 45%;
     margin: 0 auto;
     margin-top: 10%;
     background-color: rgba(250, 251, 255, 0.4);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-.header{
+
+.header {
     background-color: lightcoral;
     height: 100%;
     width: 100%;
     display: table-cell;
     vertical-align: middle;
 }
-.header-label{
+
+.header-label {
     margin-top: 25%;
     color: white;
     font-size: 225%;
+}
+
+.search-table {
+    margin-top: 10%;
+    height: 15%;
+    width: 100%;
+    text-align: right;
+}
+
+.search-panel-grid {
+    border-width: 0;
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+}
+
+.grid-output-label {
+    font-size: large;
+}
+
+.buttons-div {
+    margin-top: 2%;
+    position: relative;
+    margin-left: 66%;
+}
+
+.command-button {
+
+    height: 40px;
+    width: 80px;
 }

@@ -1,0 +1,41 @@
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+
+    <h:panelGroup layout="block" styleClass="search-table">
+
+        <h:panelGrid styleClass="search-panel-grid" id="searchPanelGrid" columns="4" cellpadding="10" cellspacing="0">
+            <h:outputText value="Sender:" styleClass="grid-output-label"/>
+            <h:inputText id="senderInput" styleClass="form-control grid-input-field"
+                    a:placeholder="sender"/>
+
+            <h:outputText value="Title:" styleClass="grid-output-label"/>
+            <h:inputText id="titleInput" styleClass="form-control grid-input-field"
+                         a:placeholder="title"/>
+
+            <h:outputText value="Date:" styleClass="grid-output-label"/>
+            <h:inputText id="dateInput" styleClass="form-control grid-input-field"
+                         a:placeholder="date"/>
+
+            <h:outputText value="Keyword:" styleClass="grid-output-label"/>
+            <h:inputText id="keywordInput" styleClass="form-control grid-input-field"
+                         a:placeholder="keyword"/>
+
+        </h:panelGrid>
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" styleClass="buttons-div">
+        <h:commandButton value="Search" styleClass="btn btn-info command-button">
+            <f:ajax execute="@form" render="@form"/>
+        </h:commandButton>
+        <h:commandButton value="Reset" style="margin-left: 9%" styleClass="btn btn-danger command-button">
+            <f:ajax execute="@form" render="@form"/>
+        </h:commandButton>
+    </h:panelGroup>
+
+
+
+</f:view>
