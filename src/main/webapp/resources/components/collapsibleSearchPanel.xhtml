@@ -1,0 +1,31 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:composite="http://java.sun.com/jsf/composite">
+
+
+    <composite:interface componentType="collapsiblePanel">
+        <composite:attribute name="collapsed"/>
+        <composite:actionSource name="toggle"/>
+        <composite:facet name="header"/>
+    </composite:interface>
+
+    <composite:implementation>
+        <h:panelGroup layout="block" style="display: table;width: 100%;height: 8%;">
+            <h:panelGroup layout="block" styleClass="collapsible-panel-header">
+                <h:outputText value="Search" style="font-size: large;text-align: left;
+            position: relative;margin-right: 84%;"/>
+                <h:commandButton id="toggle" actionListener="#{cc.toggle}" styleClass="collapsible-panel-img"
+                                 image="#{resource[cc.collapsed ? 'images:plus_1x.png' : 'images:minus_1x.png']}">
+                </h:commandButton>
+                <composite:renderFacet name="header"/>
+            </h:panelGroup>
+        </h:panelGroup>
+        <h:panelGroup layout="block" rendered="#{!cc.collapsed}">
+            <composite:insertChildren/>
+        </h:panelGroup>
+    </composite:implementation>
+
+
+</ui:composition>

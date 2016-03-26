@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:comp="http://java.sun.com/jsf/composite/components">
 
 <h:head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -19,7 +20,9 @@
     <h:form>
         <h:panelGroup layout="block" styleClass="wrapper">
             <ui:include src="/blocks/header.xhtml"/>
-            <ui:include src="/blocks/search-table.xhtml"/>
+            <comp:collapsibleSearchPanel collapsed="#{CollapseController.collapsed}">
+                <ui:include src="/blocks/search-table.xhtml"/>
+            </comp:collapsibleSearchPanel>
         </h:panelGroup>
     </h:form>
 </h:body>

@@ -31,10 +31,11 @@ body {
 }
 
 .search-table {
-    margin-top: 10%;
     height: 15%;
     width: 100%;
     text-align: right;
+    border: 2px solid lightcoral;
+    border-top-width: 0px;
 }
 
 .search-panel-grid {
@@ -55,7 +56,17 @@ body {
 }
 
 .command-button {
-
     height: 40px;
     width: 80px;
+}
+.collapsible-panel-header {
+    text-align: right;
+    border: 2px solid lightcoral;
+    width: 100%;
+    height: 8%;
+    display: table-cell;
+    vertical-align: middle;
+}
+.collapsible-panel-img{
+    margin-right: 1%;
 }
