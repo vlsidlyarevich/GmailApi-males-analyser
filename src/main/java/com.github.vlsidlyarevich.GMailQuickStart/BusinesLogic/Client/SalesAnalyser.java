@@ -1,8 +1,8 @@
-package com.github.vlsidlyarevich.GMailQuickStart.Client;
+package com.github.vlsidlyarevich.GMailQuickStart.BusinesLogic.Client;
 
 
-import com.github.vlsidlyarevich.GMailQuickStart.Service.GmailServices;
-import com.github.vlsidlyarevich.GMailQuickStart.Service.Utils.MessageUtils;
+import com.github.vlsidlyarevich.GMailQuickStart.BusinesLogic.Service.GmailServices;
+import com.github.vlsidlyarevich.GMailQuickStart.BusinesLogic.Service.Utils.MessageUtils;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -17,6 +17,8 @@ import org.apache.commons.codec.DecoderException;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+
+
 
 public class SalesAnalyser {
 

@@ -1,4 +1,4 @@
-package com.github.vlsidlyarevich.GMailQuickStart.Models;
+package com.github.vlsidlyarevich.GMailQuickStart.BusinesLogic.Models;
 
 
 import java.util.List;
@@ -12,11 +12,12 @@ public class Message {
     private String date;
     private String snippet;
     private String body;
+    private String htmlBody;
 
     public Message() {
     }
 
-    public Message(String sender, String id, List<String> labels, String receivingDate, String date, String snippet, String body) {
+    public Message(String sender, String id, List<String> labels, String receivingDate, String date, String snippet, String body, String htmlBody) {
         this.sender = sender;
         this.id = id;
         this.labels = labels;
@@ -24,10 +25,7 @@ public class Message {
         this.date = date;
         this.snippet = snippet;
         this.body = body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
+        this.htmlBody = htmlBody;
     }
 
     public void setSender(String sender) {
@@ -52,5 +50,13 @@ public class Message {
 
     public void setSnippet(String snippet) {
         this.snippet = snippet;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public void setHtmlBody(String htmlBody) {
+        this.htmlBody = htmlBody;
     }
 }

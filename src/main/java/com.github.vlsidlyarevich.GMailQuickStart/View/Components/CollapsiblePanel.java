@@ -1,4 +1,4 @@
-package com.github.vlsidlyarevich.GMailQuickStart.Components;
+package com.github.vlsidlyarevich.GMailQuickStart.View.Components;
 
 
 import javax.el.ELContext;

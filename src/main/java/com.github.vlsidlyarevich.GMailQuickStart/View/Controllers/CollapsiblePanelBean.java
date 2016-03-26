@@ -1,4 +1,4 @@
-package com.github.vlsidlyarevich.GMailQuickStart.Controllers;
+package com.github.vlsidlyarevich.GMailQuickStart.View.Controllers;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
