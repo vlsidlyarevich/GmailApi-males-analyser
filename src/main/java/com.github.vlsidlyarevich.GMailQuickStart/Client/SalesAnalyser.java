@@ -2,7 +2,7 @@ package com.github.vlsidlyarevich.GMailQuickStart.Client;
 
 
 import com.github.vlsidlyarevich.GMailQuickStart.Service.GmailServices;
-import com.github.vlsidlyarevich.GMailQuickStart.Service.Utils.DecodeUtils;
+import com.github.vlsidlyarevich.GMailQuickStart.Service.Utils.MessageUtils;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -20,35 +20,19 @@ import java.util.List;
 
 public class SalesAnalyser {
 
-    /** Application name. */
     private static final String APPLICATION_NAME =
             "Gmail API Java Quickstart";
-
-    /** Directory to store user credentials for this application. */
     private static final java.io.File DATA_STORE_DIR = new java.io.File(
             System.getProperty("user.home"), ".credentials/gmail-java-quickstart.json");
-
-    /** Global instance of the {@link FileDataStoreFactory}. */
     private static FileDataStoreFactory DATA_STORE_FACTORY;
-
-    /** Global instance of the JSON factory. */
     private static final JsonFactory JSON_FACTORY =
             JacksonFactory.getDefaultInstance();
-
-    /** Global instance of the HTTP transport. */
     private static HttpTransport HTTP_TRANSPORT;
-
-    /** Global instance of the scopes required by this quickstart.
-     *
-     * If modifying these scopes, delete your previously saved credentials
-     * at ~/.credentials/gmail-java-quickstart.json
-     */
     private static final List<String> SCOPES =
             Arrays.asList(GmailScopes.GMAIL_READONLY);
 
 
     public static void main(String[] args) throws IOException, DecoderException {
-
 
         try {
             HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
@@ -57,12 +41,8 @@ public class SalesAnalyser {
             t.printStackTrace();
             System.exit(1);
         }
-
-
-        // Build a new authorized API client service.
         Gmail service = GmailServices.getGmailService(JSON_FACTORY,HTTP_TRANSPORT,DATA_STORE_FACTORY,SCOPES
                 ,DATA_STORE_DIR,APPLICATION_NAME);
-
 
         // Print the mails in the user's account
         String user = "me";
@@ -74,12 +54,8 @@ public class SalesAnalyser {
         } else {
             System.out.println("Messages:");
             for (Message message : messages) {
-               DecodeUtils.base64UrlDecode(GmailServices.getMessage(service, user, message.getId()));
+               MessageUtils.parseMessage(GmailServices.getMessage(service, user, message.getId()));
             }
         }
     }
-
-
-
-
 }
