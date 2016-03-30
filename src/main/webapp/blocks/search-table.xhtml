@@ -10,7 +10,7 @@
         <h:panelGrid styleClass="search-panel-grid" id="searchPanelGrid" columns="4" cellpadding="10" cellspacing="0">
             <h:outputText value="Sender:" styleClass="grid-output-label"/>
             <h:inputText id="senderInput" styleClass="form-control grid-input-field"
-                    a:placeholder="sender"/>
+                         a:placeholder="sender"/>
 
             <h:outputText value="Title:" styleClass="grid-output-label"/>
             <h:inputText id="titleInput" styleClass="form-control grid-input-field"
@@ -26,20 +26,15 @@
 
         </h:panelGrid>
 
-
-
-
-        <h:panelGroup layout="block" styleClass="buttons-div">
-            <h:commandButton value="Search" styleClass="btn btn-info command-button">
-                <f:ajax execute="@form" render="@form"/>
-            </h:commandButton>
-            <h:commandButton value="Reset" style="margin-left: 9%" styleClass="btn btn-danger command-button">
-                <f:ajax execute="@form" render="@form"/>
-            </h:commandButton>
-        </h:panelGroup>
     </h:panelGroup>
 
-
-
+    <h:panelGroup layout="block" styleClass="buttons-div">
+        <h:commandButton value="Search" styleClass="btn btn-info command-button">
+            <f:ajax execute="@form" render="@form"/>
+        </h:commandButton>
+        <h:commandButton value="Reset" style="margin-left: 3%; margin-right: 2%" styleClass="btn btn-danger command-button">
+            <f:ajax execute="@form" render="@form"/>
+        </h:commandButton>
+    </h:panelGroup>
 
 </f:view>

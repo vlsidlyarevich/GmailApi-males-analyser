@@ -4,8 +4,9 @@
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:f="http://java.sun.com/jsf/core">
 
-
     <h:panelGroup layout="block" styleClass="output-table">
+
+        <ui:include src="/blocks/paginator.xhtml"/>
 
         <h:dataTable border="1" styleClass="messages-output-table table "  id="messages-output-table" value="#{messagesBean.getSublist()}" var="message">
             <h:column headerClass="messages-output-header id-header">
@@ -27,6 +28,6 @@
 
         </h:dataTable>
 
+        <ui:include src="/blocks/paginator.xhtml"/>
     </h:panelGroup>
-
 </f:view>

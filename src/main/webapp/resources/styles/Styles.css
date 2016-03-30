@@ -57,9 +57,10 @@ body {
 }
 
 .buttons-div {
+    width: 100%;
     margin-top: 2%;
     position: relative;
-    margin-left: 66%;
+    text-align: right;
 }
 
 .command-button {
@@ -78,7 +79,7 @@ body {
     margin-right: 1%;
 }
 .output-table{
-
+    margin-top: 10%;
 }
 .messages-output-header {
     color: white;
@@ -93,7 +94,7 @@ body {
     border-color: #d9534f;
     border-collapse: collapse;
     height: 400px;
-    margin-top: 20%;
+    margin-bottom: 0px;
 }
 .snippet-header{
     text-align: left;
@@ -113,5 +114,11 @@ body {
     border-collapse: collapse;
 }
 .paginator{
+    text-align: right;
+}
+.selected{
+
+}
+.paginator-btn{
 
 }

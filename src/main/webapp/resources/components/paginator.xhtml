@@ -17,14 +17,14 @@
         <ui:repeat var="link" value="#{cc.getCountPages(cc.attrs.list.size(), cc.attrs.pageItems)}" varStatus="status">
             <h:commandLink style=" padding: 5px; color: black;" styleClass="#{cc.attrs.currentPage eq status.index ? 'selected' : ''}">
                 <f:attribute name="index" value="#{link}"/>
-                <h:outputText value="#{link}" styleClass="btn btn-default btn-xs"/>
+                <h:outputText value="#{link}" styleClass="btn btn-default btn-xs paginator-btn"/>
                 <f:ajax  event="click" listener="#{cc.action}" render="@form"/>
             </h:commandLink>
         </ui:repeat>
 
         <h:selectOneMenu  value="#{cc.attrs.pageItems}" styleClass="btn btn-default btn-sm dropdown-toggle">
             <f:selectItem itemValue="5" itemLabel="5"/>
-            <f:selectItem itemValue="3" itemLabel="3"/>
+            <f:selectItem itemValue="8" itemLabel="8"/>
             <f:ajax render="@form" event="valueChange"/>
         </h:selectOneMenu>
 
