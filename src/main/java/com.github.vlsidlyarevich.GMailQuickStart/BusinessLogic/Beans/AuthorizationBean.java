@@ -1,7 +1,7 @@
-package com.github.vlsidlyarevich.GMailQuickStart.BusinesLogic.AuthorizationBeans;
+package com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Beans;
 
-import com.github.vlsidlyarevich.GMailQuickStart.BusinesLogic.Service.GmailServices;
-import com.github.vlsidlyarevich.GMailQuickStart.BusinesLogic.Service.Utils.MessageUtils;
+import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Gmail.GmailServices;
+import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Utils.MessageUtils;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -13,16 +13,15 @@ import com.google.api.services.gmail.model.ListMessagesResponse;
 import com.google.api.services.gmail.model.Message;
 import org.apache.commons.codec.DecoderException;
 
+import javax.faces.bean.ManagedBean;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-package com.github.vlsidlyarevich.GMailQuickStart.Client;
 
 
-import com.github.vlsidlyarevich.GMailQuickStart.BusinesLogic.Service.GmailServices;
 
-
+@ManagedBean
 public class AuthorizationBean {
 
     private static final String APPLICATION_NAME =
@@ -49,10 +48,11 @@ public class AuthorizationBean {
         Gmail service = GmailServices.getGmailService(JSON_FACTORY, HTTP_TRANSPORT, DATA_STORE_FACTORY, SCOPES
                 , DATA_STORE_DIR, APPLICATION_NAME);
 
-
         String user = "me";
+
         ListMessagesResponse listResponse =
                 service.users().messages().list(user).execute();
+
         List<Message> messages = listResponse.getMessages();
         if (messages.size() != 0) {
             for (Message message : messages) {

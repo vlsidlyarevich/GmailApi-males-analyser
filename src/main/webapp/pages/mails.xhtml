@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <h:outputStylesheet library="css" name="bootstrap.min.css"/>
     <h:outputStylesheet library="styles" name="Styles.css"/>
-    <title>Sales analyser</title>
+    <title>Mail Hunter</title>
 </h:head>
 
 
@@ -23,6 +23,9 @@
             <comp:collapsibleSearchPanel collapsed="#{CollapseController.collapsed}">
                 <ui:include src="/blocks/search-table.xhtml"/>
             </comp:collapsibleSearchPanel>
+            <ui:include src="/blocks/paginator.xhtml"/>
+            <ui:include src="/blocks/output-table.xhtml"/>
+            <ui:include src="/blocks/paginator.xhtml"/>
         </h:panelGroup>
     </h:form>
 </h:body>

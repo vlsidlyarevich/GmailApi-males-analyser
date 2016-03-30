@@ -1,4 +1,4 @@
-package com.github.vlsidlyarevich.GMailQuickStart.BusinesLogic.Service.Utils;
+package com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Utils;
 
 import com.google.api.services.gmail.model.Message;
 import com.google.api.services.gmail.model.MessagePartHeader;
@@ -18,7 +18,7 @@ public final class MessageUtils {
     public static String parseMessage(Message message) throws DecoderException, UnsupportedEncodingException {
 
 
-        com.github.vlsidlyarevich.GMailQuickStart.BusinesLogic.Models.Message message1 = new com.github.vlsidlyarevich.GMailQuickStart.BusinesLogic.Models.Message();
+        com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Models.Message message1 = new com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Models.Message();
         message1.setId(message.getId());
         message1.setLabels(message.getLabelIds());
         message1.setSnippet(message.getSnippet());
@@ -40,9 +40,6 @@ public final class MessageUtils {
                 message1.setHtmlBody(new String(decodedBytes,"UTF-8"));
             }
         }
-
-
-        System.out.println();
         return null;
     }
 }

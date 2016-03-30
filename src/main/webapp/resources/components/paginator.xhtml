@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:composite="http://java.sun.com/jsf/composite">
+
+    <composite:interface componentType="paginator">
+        <composite:attribute name="currentPage" type="java.lang.Integer"/>
+        <composite:attribute name="list" type="java.util.List"/>
+        <composite:attribute name="countAllItems" type="java.lang.Integer"/>
+        <composite:attribute name="pageItems" type="java.lang.Integer"/>
+        <composite:attribute name="action" method-signature="void action(javax.faces.event.AjaxBehaviorEvent)"/>
+    </composite:interface>
+
+    <composite:implementation>
+        <ui:repeat var="link" value="#{cc.getCountPages(cc.attrs.list.size(), cc.attrs.pageItems)}" varStatus="status">
+            <h:commandLink style=" padding: 5px; color: black;" styleClass="#{cc.attrs.currentPage eq status.index ? 'selected' : ''}">
+                <f:attribute name="index" value="#{link}"/>
+                <h:outputText value="#{link}" styleClass="btn btn-default btn-xs"/>
+                <f:ajax  event="click" listener="#{cc.action}" render="@form"/>
+            </h:commandLink>
+        </ui:repeat>
+
+        <h:selectOneMenu  value="#{cc.attrs.pageItems}" styleClass="btn btn-default btn-sm dropdown-toggle">
+            <f:selectItem itemValue="5" itemLabel="5"/>
+            <f:selectItem itemValue="3" itemLabel="3"/>
+            <f:ajax render="@form" event="valueChange"/>
+        </h:selectOneMenu>
+
+    </composite:implementation>
+</ui:composition>

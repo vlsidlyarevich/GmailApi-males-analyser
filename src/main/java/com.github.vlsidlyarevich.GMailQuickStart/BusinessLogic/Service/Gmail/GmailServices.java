@@ -1,7 +1,7 @@
-package com.github.vlsidlyarevich.GMailQuickStart.BusinesLogic.Service;
+package com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Gmail;
 
-import com.github.vlsidlyarevich.GMailQuickStart.BusinesLogic.Client.SalesAnalyser;
-import com.github.vlsidlyarevich.GMailQuickStart.BusinesLogic.Service.Authorization.AuthorizeUtils;
+import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Client.SalesAnalyser;
+import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Authorization.AuthorizeUtils;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;

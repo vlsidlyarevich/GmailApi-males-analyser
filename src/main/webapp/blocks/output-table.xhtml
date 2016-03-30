@@ -7,12 +7,25 @@
 
     <h:panelGroup layout="block" styleClass="output-table">
 
+        <h:dataTable border="1" styleClass="messages-output-table table "  id="messages-output-table" value="#{messagesBean.getSublist()}" var="message">
+            <h:column headerClass="messages-output-header id-header">
+                <f:facet name="header">
+                    ID
+                </f:facet>
+                <h:outputLabel value="#{message.id}" styleClass="product-output-result"/>
+                <h:outputLabel value="#{message.body}" styleClass="product-output-result" rendered="#{message.bodyView}"/>
+            </h:column>
+
+            <h:column headerClass="messages-output-header snippet-header">
+                <f:facet name="header">
+                    Header
+                </f:facet>
+                <h:outputLabel value="#{message.snippet}" styleClass="product-output-result product-output-snippet"/>
+            </h:column>
 
 
 
-
-
-
+        </h:dataTable>
 
     </h:panelGroup>
 
