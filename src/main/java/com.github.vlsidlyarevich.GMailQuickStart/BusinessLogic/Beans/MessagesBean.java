@@ -84,6 +84,10 @@ public class MessagesBean implements Serializable {
         return messages.subList(startPosition, endPosition);
     }
 
+
+
+
+
     public void action(AjaxBehaviorEvent event) throws javax.faces.event.AbortProcessingException {
         currentPage = (Integer) event.getComponent().getAttributes().get("index") - 1;
     }

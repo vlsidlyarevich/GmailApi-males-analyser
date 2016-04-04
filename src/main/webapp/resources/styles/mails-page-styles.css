@@ -101,7 +101,7 @@ body {
 }
 
 .snippet-header {
-    text-align: left;
+    text-align: center;
     border-top: 0;
     border-left: 2px solid black;
 }
@@ -111,7 +111,15 @@ body {
 
 .product-output-result {
     vertical-align: middle;
+    color: black;
 }
+
+.product-output-result:hover{
+    color:#d9534f;
+    text-decoration: none;
+}
+
+
 
 .product-output-snippet {
     text-align: left;
@@ -122,9 +130,8 @@ body {
     vertical-align: middle;
     border: 2px solid #d9534f;
     border-collapse: collapse;
-    border-right: none;
 }
-.table td+td+td{
+.table td+td{
     text-align: right;
     border-left: none;
 }

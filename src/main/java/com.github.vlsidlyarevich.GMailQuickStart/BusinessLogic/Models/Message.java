@@ -30,6 +30,7 @@ public class Message {
         bodyView = false;
     }
 
+
     public String getSender() {
         return sender;
     }
