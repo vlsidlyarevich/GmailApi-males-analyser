@@ -1,0 +1,62 @@
+.cb-slideshow,
+.cb-slideshow:after {
+    width: 100%;
+    height: 100%;
+    top: 0%;
+    left: 0%;
+    z-index: 0;
+}
+
+.cb-slideshow li span {
+    width: 100%;
+    height: 1000px;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    color: transparent;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: unset;
+    opacity: 0;
+    z-index: -1;
+    -webkit-backface-visibility: hidden;
+    animation: imageAnimation 90s linear infinite 0s;
+}
+.cb-slideshow li:nth-child(1) span {
+    background-image: url(/resources/images/background/yT2zO6j.jpg);
+    animation-delay: 0s;
+}
+.cb-slideshow li:nth-child(2) span {
+    background-image: url(/resources/images/background/Web-Design-Cost-Per-Click-Campaigns.jpg);
+    animation-delay: 15s;
+}
+.cb-slideshow li:nth-child(3) span {
+    background-image: url(/resources/images/background/business-web-copy-copywriting.jpg);
+    animation-delay: 30s;
+}
+.cb-slideshow li:nth-child(4) span {
+    background-image: url(/resources/images/background/businessman.jpg);
+    animation-delay: 45s;
+}
+.cb-slideshow li:nth-child(5) span {
+    background-image: url(/resources/images/background/header-small-business-web-support.jpg);
+    animation-delay: 60s;
+}
+.cb-slideshow li:nth-child(6) span {
+    background-image: url(/resources/images/background/side-business-grow.jpg);
+    animation-delay: 75s;
+}
+.cb-slideshow li:nth-child(7) span {
+    background-image: url(/resources/images/background/tabletimage.jpg);
+    animation-delay: 90s;
+}
+/* Animation for the slideshow images */
+@keyframes imageAnimation {
+    0% { opacity: 0;
+         }
+    8% { opacity: 1;
+       }
+    17% { opacity: 1 }
+    30% { opacity: 0 }
+    100% { opacity: 0 }
+}

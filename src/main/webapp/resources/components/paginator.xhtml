@@ -22,7 +22,7 @@
             </h:commandLink>
         </ui:repeat>
 
-        <h:selectOneMenu  value="#{cc.attrs.pageItems}" styleClass="btn btn-default btn-sm dropdown-toggle">
+        <h:selectOneMenu  value="#{cc.attrs.pageItems}" styleClass="btn btn-default btn-sm dropdown-toggle paginator-dropdown">
             <f:selectItem itemValue="5" itemLabel="5"/>
             <f:selectItem itemValue="8" itemLabel="8"/>
             <f:ajax render="@form" event="valueChange"/>

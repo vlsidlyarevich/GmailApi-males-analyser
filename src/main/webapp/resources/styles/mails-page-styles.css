@@ -1,14 +1,11 @@
-
 body {
-
-    background: url("#{resource['images/side-business-grow.jpg']}") no-repeat center center fixed;
-    -webkit-background-size: cover;
+    height: 1000px;
+  /*  -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    /*background-image: url("#{resource['images/side-business-grow.jpg']}");*/
     padding: 0;
-    margin: 0;
+    margin: 0;*/
     text-align: center;
 }
 
@@ -67,6 +64,7 @@ body {
     height: 40px;
     width: 80px;
 }
+
 .collapsible-panel-header {
     text-align: right;
     border: 2px solid #d9534f;
@@ -75,50 +73,95 @@ body {
     display: table-cell;
     vertical-align: middle;
 }
-.collapsible-panel-img{
+
+.collapsible-panel-img {
     margin-right: 1%;
 }
-.output-table{
+
+.output-table {
     margin-top: 10%;
 }
+
 .messages-output-header {
     color: white;
     height: 45px;
     background-color: #d9534f;
     text-align: center;
 }
-.id-header{
-   width:20%;
+
+.id-header {
+    width: 20%;
 }
-.messages-output-table{
+
+.messages-output-table {
     border-color: #d9534f;
     border-collapse: collapse;
     height: 400px;
     margin-bottom: 0px;
 }
-.snippet-header{
+
+.snippet-header {
     text-align: left;
     border-top: 0;
     border-left: 2px solid black;
 }
-.product-output-result{
+.buttons-header{
+    width:10%;
+}
+
+.product-output-result {
     vertical-align: middle;
 }
-.product-output-snippet{
+
+.product-output-snippet {
     text-align: left;
 }
-.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
     text-align: left;
     vertical-align: middle;
     border: 2px solid #d9534f;
     border-collapse: collapse;
+    border-right: none;
 }
-.paginator{
+.table td+td+td{
+    text-align: right;
+    border-left: none;
+}
+
+.paginator {
     text-align: right;
 }
-.selected{
 
+.selected span {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
 }
-.paginator-btn{
+.selected span :hover {
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
 
+.paginator-btn {
+    background-color: #31b0d5;
+    border-color: #269abc;
+    color: white;
+}
+.paginator-btn:hover{
+    color: #fff;
+    background-color: #269abc;
+    border-color: #1b6d85;
+}
+
+.paginator-dropdown{
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+.paginator-dropdown:hover, .paginator-dropdown:active, .paginator-dropdown:focus{
+    color: #fff;
+    background-color: #c9302c;
+    border-color: #ac2925;
 }

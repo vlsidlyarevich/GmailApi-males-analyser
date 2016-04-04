@@ -11,13 +11,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <h:outputStylesheet library="css" name="bootstrap.min.css"/>
-    <h:outputStylesheet library="styles" name="Styles.css"/>
+    <h:outputStylesheet library="styles" name="mails-page-styles.css"/>
     <title>Mail Hunter</title>
 </h:head>
 
 
 <h:body>
     <h:form>
+        <ui:include src="/blocks/background-slideshow.html"/>
         <h:panelGroup layout="block" styleClass="wrapper">
             <ui:include src="/blocks/header.xhtml"/>
             <comp:collapsibleSearchPanel collapsed="#{CollapseController.collapsed}">
