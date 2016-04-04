@@ -24,9 +24,9 @@
                     Messages
                 </f:facet>
 
-                <h:commandLink value="#{message.snippet}" styleClass="product-output-result product-output-snippet"
-                               data-toggle="collapse" data-parent="#accordion" href="#collapse"/>
-               <!-- <a data-toggle="collapse" data-parent="#accordion" href="#collapse">Collapsible Group 1</a>-->
+<!--                <h:commandLink value="#{message.snippet}" styleClass="product-output-result product-output-snippet"
+                               data-toggle="collapse" data-parent="#accordion" href="#collapse"/>-->
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse" class="product-output-result product-output-snippet">#{message.snippet}</a>
                 <div id="collapse" class="collapse panel-collapse">
                     <h:outputText value="#{message.body}"/>
                 </div>
