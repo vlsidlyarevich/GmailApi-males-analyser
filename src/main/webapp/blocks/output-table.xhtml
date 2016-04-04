@@ -9,38 +9,17 @@
         <ui:include src="/blocks/paginator.xhtml"/>
 
         <h:dataTable border="1" styleClass="messages-output-table table " id="messages-output-table"
-                     value="#{messagesBean.getSublist()}" var="message">
-
-            <!--<h:column headerClass="messages-output-header id-header">
-                <f:facet name="header">
-                    ID
-                </f:facet>
-                <h:outputLabel value="#{message.id}" styleClass="product-output-result"/>
-               &lt;!&ndash; <h:outputLabel value="#{message.body}" styleClass="product-output-result" rendered="#{message.bodyView}"/>&ndash;&gt;
-            </h:column>-->
-
+                     value="#{messagesBean.getSublist()}" var="message" binding="#{table}">
             <h:column headerClass="messages-output-header snippet-header">
                 <f:facet name="header">
                     Messages
                 </f:facet>
-
-<!--                <h:commandLink value="#{message.snippet}" styleClass="product-output-result product-output-snippet"
-                               data-toggle="collapse" data-parent="#accordion" href="#collapse"/>-->
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse" class="product-output-result product-output-snippet">#{message.snippet}</a>
-                <div id="collapse" class="collapse panel-collapse">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse#{table.rowIndex}" class="product-output-result product-output-snippet">#{message.snippet}</a>
+                <div id="collapse#{table.rowIndex}" class="collapse panel-collapse">
                     <h:outputText value="#{message.body}"/>
                 </div>
-                <!--<h:outputLabel value="#{message.snippet}" styleClass="product-output-result product-output-snippet"/>-->
             </h:column>
-
-            <!--   <h:column headerClass="buttons-header messages-output-header">
-                   <h:commandButton value="Show" styleClass="btn btn-info command-button" action="#{message.setBodyView(true)}" rendered="#{!message.bodyView}"/>
-                   <h:commandButton value="Hide" styleClass="btn btn-danger command-button" action="#{message.setBodyView(false)}" rendered="#{message.bodyView}"/>
-               </h:column>-->
-
-
         </h:dataTable>
-
         <ui:include src="/blocks/paginator.xhtml"/>
     </h:panelGroup>
 </f:view>
