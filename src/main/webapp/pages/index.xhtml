@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
 
 <h:head>
@@ -25,8 +26,18 @@
 
         <h:panelGroup layout="block" styleClass="wrapper">
             <ui:include src="/blocks/header.xhtml"/>
+            <h:panelGrid columns="1" style="text-align: center" styleClass="login-input-grid table"
+                         id="login-input-grid">
+                <h:inputText a:placeholder="Username" id="j_username" styleClass="form-control"
+                             required="true"/>
+                <h:inputSecret a:placeholder="Password" id="j_password" styleClass="form-control"
+                               required="true"/>
+            </h:panelGrid>
+            <h:panelGrid columns="2" styleClass="table  button-grid" style="text-align: center" id="button-input-grid">
+                <input type="submit" value="Login" class="btn btn-lg btn-success"/>
+            </h:panelGrid>
 
-                
+
 
         </h:panelGroup>
     </h:form>
