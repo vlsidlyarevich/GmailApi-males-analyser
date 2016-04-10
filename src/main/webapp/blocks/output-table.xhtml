@@ -1,25 +1,57 @@
 <f:view
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:h="http://java.sun.com/jsf/html"
-        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-        xmlns:f="http://java.sun.com/jsf/core">
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
 
-    <h:panelGroup layout="block" styleClass="output-table" id="accordion">
+    <!--<h:panelGroup layout="block" styleClass="output-table">
 
         <ui:include src="/blocks/paginator.xhtml"/>
 
-        <h:dataTable border="1" styleClass="messages-output-table table " id="messages-output-table"
-                     value="#{messagesBean.getSublist()}" var="message" binding="#{table}">
-            <h:column headerClass="messages-output-header snippet-header">
-                <f:facet name="header">
-                    Messages
-                </f:facet>
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse#{table.rowIndex}" class="product-output-result product-output-snippet">#{message.snippet}</a>
-                <div id="collapse#{table.rowIndex}" class="collapse panel-collapse">
-                    <h:outputText value="#{message.body}"/>
-                </div>
-            </h:column>
-        </h:dataTable>
+        <div class="panel-group" id="accordion" style="margin-bottom: 0px;">
+            <h:dataTable border="1" styleClass="messageModels-output-table table " id="messageModels-output-table"
+                         value="#{messagesBean.getSublist()}" var="messageModel" binding="#{table}">
+                <h:column headerClass="messageModels-output-header snippet-header">
+                    <f:facet name="header">
+                        Messages
+                    </f:facet>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse#{table.rowIndex}"
+                       class="product-output-result product-output-snippet">#{messageModel.snippet}</a>
+
+                    <div id="collapse#{table.rowIndex}" class="collapse panel-collapse">
+                        <h:outputText value="#{messageModel.body}"/>
+                    </div>
+                </h:column>
+            </h:dataTable>
+        </div>
+
         <ui:include src="/blocks/paginator.xhtml"/>
+    </h:panelGroup>-->
+
+    <h:panelGroup layout="block" styleClass="output-table">
+        <!--
+
+                <p:dataTable var="messageModel" value="#{messagesBean.getSublist()}" paginator="true" rows="5"
+                             rowsPerPageTemplate="5,8"  lazy="true"
+                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}">
+
+                    <p:column>
+                        <h:outputText value="#{messageModel.body}"/>
+                    </p:column>
+
+                </p:dataTable>
+        -->
+
+        <ui:include src="/blocks/paginator.xhtml"/>
+
+
+        <p:accordionPanel var="messageModel" value="#{messagesBean.getSublist()}">
+            <p:tab title="#{messageModel.snippet}">
+                <h:outputText value="#{messageModel.body}" escape="false"/>
+            </p:tab>
+        </p:accordionPanel>
+        <ui:include src="/blocks/paginator.xhtml"/>
+
     </h:panelGroup>
 </f:view>

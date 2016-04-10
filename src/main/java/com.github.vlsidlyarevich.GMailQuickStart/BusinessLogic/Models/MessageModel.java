@@ -3,7 +3,7 @@ package com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Models;
 
 import java.util.List;
 
-public class Message {
+public class MessageModel {
 
     private String sender;
     private String id;
@@ -15,10 +15,10 @@ public class Message {
     private String htmlBody;
     private Boolean bodyView;
 
-    public Message() {
+    public MessageModel() {
     }
 
-    public Message(String sender, String id, List<String> labels, String receivingDate, String date, String snippet, String body, String htmlBody) {
+    public MessageModel(String sender, String id, List<String> labels, String receivingDate, String date, String snippet, String body, String htmlBody) {
         this.sender = sender;
         this.id = id;
         this.labels = labels;

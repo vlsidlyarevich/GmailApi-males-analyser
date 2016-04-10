@@ -20,7 +20,7 @@ import java.util.List;
 
 
 
-public class SalesAnalyser {
+public class MailHunter {
 
     private static final String APPLICATION_NAME =
             "Gmail API Java Quickstart";

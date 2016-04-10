@@ -1,6 +1,6 @@
 package com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Authorization;
 
-import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Client.SalesAnalyser;
+import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Client.MailHunter;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -23,12 +23,12 @@ public final class AuthorizeUtils {
      * @return an authorized Credential object.
      * @throws IOException
      */
-    public static Credential authorize(Class<SalesAnalyser> salesAnalyser,JsonFactory JSON_FACTORY,
+    public static Credential authorize(Class<MailHunter> salesAnalyser,JsonFactory JSON_FACTORY,
                                        HttpTransport HTTP_TRANSPORT,FileDataStoreFactory DATA_STORE_FACTORY,
                                        List<String> SCOPES,File DATA_STORE_DIR) throws IOException {
         // Load client secrets.
         InputStream in =
-                SalesAnalyser.class.getResourceAsStream("/client_secret.json");
+                MailHunter.class.getResourceAsStream("/client_secret.json");
         GoogleClientSecrets clientSecrets =
                 GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 

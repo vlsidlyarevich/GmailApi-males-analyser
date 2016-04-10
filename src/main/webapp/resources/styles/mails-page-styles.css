@@ -16,7 +16,7 @@ body {
     width: 45%;
     margin: 0 auto;
     margin-top: 5%;
-    background-color: rgba(186, 186, 186, 0.52);
+    background-color: rgba(247,244,244,0.75);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -111,14 +111,14 @@ body {
 
 .product-output-result {
     vertical-align: middle;
+    font-size: medium;
     color: black;
 }
 
-.product-output-result:hover{
+.product-output-result:hover, .product-output-result:focus{
     color:#d9534f;
     text-decoration: none;
 }
-
 
 
 .product-output-snippet {

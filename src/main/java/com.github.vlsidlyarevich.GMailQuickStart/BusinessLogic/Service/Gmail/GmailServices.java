@@ -1,6 +1,6 @@
 package com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Gmail;
 
-import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Client.SalesAnalyser;
+import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Client.MailHunter;
 import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Authorization.AuthorizeUtils;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.http.HttpTransport;
@@ -30,7 +30,7 @@ public final class GmailServices {
                                         List<String> SCOPES,java.io.File DATA_STORE_DIR,String APPLICATION_NAME)
                                         throws IOException {
 
-        Credential credential = AuthorizeUtils.authorize(SalesAnalyser.class,JSON_FACTORY,HTTP_TRANSPORT,DATA_STORE_FACTORY,
+        Credential credential = AuthorizeUtils.authorize(MailHunter.class,JSON_FACTORY,HTTP_TRANSPORT,DATA_STORE_FACTORY,
                 SCOPES,DATA_STORE_DIR);
         return new Gmail.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential)
                 .setApplicationName(APPLICATION_NAME)

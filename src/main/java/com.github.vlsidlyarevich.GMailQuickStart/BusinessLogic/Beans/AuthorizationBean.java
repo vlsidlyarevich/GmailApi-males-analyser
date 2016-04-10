@@ -1,5 +1,6 @@
 package com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Beans;
 
+import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Models.MessageModel;
 import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Gmail.GmailServices;
 import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Utils.MessageUtils;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
@@ -15,7 +16,9 @@ import org.apache.commons.codec.DecoderException;
 
 import javax.faces.bean.ManagedBean;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -25,18 +28,20 @@ import java.util.List;
 public class AuthorizationBean {
 
     private static final String APPLICATION_NAME =
-            "Gmail API Java Quickstart";
+            "Mail Hunter";
     private static final java.io.File DATA_STORE_DIR = new java.io.File(
-            System.getProperty("user.home"), ".credentials/gmail-java-quickstart.json");
+            System.getProperty("user.home"), ".credentials/mail-hunter.json");
     private static FileDataStoreFactory DATA_STORE_FACTORY;
     private static final JsonFactory JSON_FACTORY =
             JacksonFactory.getDefaultInstance();
     private static HttpTransport HTTP_TRANSPORT;
     private static final List<String> SCOPES =
             Arrays.asList(GmailScopes.GMAIL_READONLY);
+    private static Gmail service;
 
 
     public static void authorize() throws IOException, DecoderException {
+
 
         try {
             HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
@@ -45,20 +50,50 @@ public class AuthorizationBean {
             t.printStackTrace();
             System.exit(1);
         }
-        Gmail service = GmailServices.getGmailService(JSON_FACTORY, HTTP_TRANSPORT, DATA_STORE_FACTORY, SCOPES
+
+
+        service = GmailServices.getGmailService(JSON_FACTORY, HTTP_TRANSPORT, DATA_STORE_FACTORY, SCOPES
                 , DATA_STORE_DIR, APPLICATION_NAME);
+
+    }
+
+    public static List<MessageModel> getMessages() {
 
         String user = "me";
 
         ListMessagesResponse listResponse =
-                service.users().messages().list(user).execute();
+                null;
+        try {
+            listResponse = service.users().messages().list(user).execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         List<Message> messages = listResponse.getMessages();
+        List<MessageModel> models =
+                new LinkedList<MessageModel>();
+
+
         if (messages.size() != 0) {
             for (Message message : messages) {
-                MessageUtils.parseMessage(GmailServices.getMessage(service, user, message.getId()));
+                try {
+
+                    models.add(MessageUtils.parseMessage(GmailServices.getMessage(service, user, message.getId())));
+
+                } catch (DecoderException e) {
+                    e.printStackTrace();
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
+
+        return models;
     }
+
+
+
 }
 
