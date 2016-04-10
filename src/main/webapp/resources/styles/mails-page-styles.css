@@ -1,11 +1,11 @@
 body {
     height: 1000px;
-  /*  -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    padding: 0;
-    margin: 0;*/
+    /*  -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      padding: 0;
+      margin: 0;*/
     text-align: center;
 }
 
@@ -16,7 +16,7 @@ body {
     width: 45%;
     margin: 0 auto;
     margin-top: 5%;
-    background-color: rgba(247,244,244,0.75);
+    background-color: rgba(247, 244, 244, 0.75);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -32,6 +32,12 @@ body {
     margin-top: 25%;
     color: white;
     font-size: 225%;
+}
+
+.header-div {
+    display: table;
+    width: 100%;
+    height: 8%
 }
 
 .search-table {
@@ -105,8 +111,9 @@ body {
     border-top: 0;
     border-left: 2px solid black;
 }
-.buttons-header{
-    width:10%;
+
+.buttons-header {
+    width: 10%;
 }
 
 .product-output-result {
@@ -115,11 +122,10 @@ body {
     color: black;
 }
 
-.product-output-result:hover, .product-output-result:focus{
-    color:#d9534f;
+.product-output-result:hover, .product-output-result:focus {
+    color: #d9534f;
     text-decoration: none;
 }
-
 
 .product-output-snippet {
     text-align: left;
@@ -131,7 +137,8 @@ body {
     border: 2px solid #d9534f;
     border-collapse: collapse;
 }
-.table td+td{
+
+.table td + td {
     text-align: right;
     border-left: none;
 }
@@ -145,6 +152,7 @@ body {
     background-color: #d9534f;
     border-color: #d43f3a;
 }
+
 .selected span :hover {
     color: #fff;
     background-color: #c9302c;
@@ -156,18 +164,20 @@ body {
     border-color: #269abc;
     color: white;
 }
-.paginator-btn:hover{
+
+.paginator-btn:hover {
     color: #fff;
     background-color: #269abc;
     border-color: #1b6d85;
 }
 
-.paginator-dropdown{
+.paginator-dropdown {
     color: #fff;
     background-color: #d9534f;
     border-color: #d43f3a;
 }
-.paginator-dropdown:hover, .paginator-dropdown:active, .paginator-dropdown:focus{
+
+.paginator-dropdown:hover, .paginator-dropdown:active, .paginator-dropdown:focus {
     color: #fff;
     background-color: #c9302c;
     border-color: #ac2925;

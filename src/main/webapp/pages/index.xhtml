@@ -6,9 +6,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core">
 
-<f:view>
 
-    <h:head>
+<h:head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <h:outputStylesheet library="css" name="bootstrap.min.css"/>
@@ -16,10 +15,20 @@
     <h:outputScript library="js" name="jquery-1.12.2.min.js"/>
     <h:outputScript library="js" name="bootstrap.min.js"/>
     <h:outputStylesheet library="styles" name="background-slideshow-styles.css"/>
+    <h:outputStylesheet library="styles" name="login-page-styles.css"/>
+    <title>Mail Hunter</title>
 </h:head>
+<h:body>
+    <h:form>
 
         <ui:include src="/blocks/background-slideshow.html"/>
-        <h3>Hello world!</h3>
 
-</f:view>
+        <h:panelGroup layout="block" styleClass="wrapper">
+            <ui:include src="/blocks/header.xhtml"/>
+
+                
+
+        </h:panelGroup>
+    </h:form>
+</h:body>
 </html>
