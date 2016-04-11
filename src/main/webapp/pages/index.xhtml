@@ -36,8 +36,11 @@
             </h:panelGrid>
             <h:panelGrid columns="2" styleClass="table  button-grid" style="text-align: center" id="button-input-grid">
                 <input type="submit" value="Login" class="btn btn-lg btn-success"/>
+                <!-- <a href="/j_spring_security_logout" class="btn-link"> Logout </a>-->
+                <h:form>
+                    <h:outputLink value="#{request.contextPath}/j_spring_security_logout" styleClass="btn-link" >Logout</h:outputLink>
+                </h:form>
             </h:panelGrid>
-
 
 
         </h:panelGroup>
