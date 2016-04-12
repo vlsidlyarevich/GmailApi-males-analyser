@@ -26,6 +26,7 @@
             <comp:collapsibleSearchPanel collapsed="#{CollapseController.collapsed}">
                 <ui:include src="/blocks/search-table.xhtml"/>
             </comp:collapsibleSearchPanel>
+            <h:outputLink value="#{request.contextPath}/j_spring_security_logout" styleClass="btn-link" >Logout</h:outputLink>
             <ui:include src="/blocks/output-table.xhtml"/>
         </h:panelGroup>
     </h:form>

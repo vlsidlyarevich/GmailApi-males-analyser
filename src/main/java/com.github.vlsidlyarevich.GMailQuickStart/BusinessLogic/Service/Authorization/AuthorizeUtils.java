@@ -28,7 +28,7 @@ public final class AuthorizeUtils {
                                        List<String> SCOPES,File DATA_STORE_DIR) throws IOException {
         // Load client secrets.
         InputStream in =
-                MailHunter.class.getResourceAsStream("/client_secret.json");
+               MailHunter.class.getResourceAsStream("/client_secret.json");
         GoogleClientSecrets clientSecrets =
                 GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 

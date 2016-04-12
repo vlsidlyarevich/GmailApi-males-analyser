@@ -16,34 +16,19 @@
     <h:outputScript library="js" name="jquery-1.12.2.min.js"/>
     <h:outputScript library="js" name="bootstrap.min.js"/>
     <h:outputStylesheet library="styles" name="background-slideshow-styles.css"/>
-    <h:outputStylesheet library="styles" name="login-page-styles.css"/>
+    <h:outputStylesheet library="styles" name="index-page-styles.css"/>
     <title>Mail Hunter</title>
 </h:head>
 <h:body>
-
-    <form action="/j_spring_security_check" method="post">
+    <h:form>
 
         <ui:include src="/blocks/background-slideshow.html"/>
-
-        <h:panelGroup layout="block" styleClass="wrapper">
-            <ui:include src="/blocks/header.xhtml"/>
-            <h:panelGrid columns="1" style="text-align: center" styleClass="login-input-grid table"
-                         id="login-input-grid">
-                <h:inputText a:placeholder="Username" id="j_username" styleClass="form-control"
-                             required="true"/>
-                <h:inputSecret a:placeholder="Password" id="j_password" styleClass="form-control"
-                               required="true"/>
-            </h:panelGrid>
-            <h:panelGrid columns="2" styleClass="table  button-grid" style="text-align: center" id="button-input-grid">
-                <input type="submit" value="Login" class="btn btn-lg btn-success"/>
-                <!-- <a href="/j_spring_security_logout" class="btn-link"> Logout </a>-->
-                <h:form>
-                    <h:outputLink value="#{request.contextPath}/j_spring_security_logout" styleClass="btn-link" >Logout</h:outputLink>
-                </h:form>
-            </h:panelGrid>
-
-
+        <h:panelGroup layout="block" styleClass="header">
+            <h:link outcome="index" value="Home" styleClass=""/>
+            <h:link outcome="login" value="Sign in" styleClass=""/>
+            <h:outputLink value="#{request.contextPath}/j_spring_security_logout"
+                          styleClass="btn-link">Logout</h:outputLink>
         </h:panelGroup>
-    </form>
+    </h:form>
 </h:body>
 </html>
