@@ -13,11 +13,20 @@
         <logout logout-success-url="/pages/login.xhtml" />
     </http>
 
-    <authentication-manager>
+  <!--  <authentication-manager>
         <authentication-provider>
             <user-service>
                 <user name="test1" password="1" authorities="ROLE_USER" />
             </user-service>
+        </authentication-provider>
+    </authentication-manager>-->
+    <authentication-manager>
+        <authentication-provider>
+            <jdbc-user-service data-source-ref="dataSource"
+                               users-by-username-query=
+                                       "select username,password, enabled  from users where username=?"
+                               authorities-by-username-query=
+                                       "select username, role from users where username =?  " />
         </authentication-provider>
     </authentication-manager>
 
