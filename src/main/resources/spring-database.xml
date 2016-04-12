@@ -7,7 +7,7 @@
        http://www.springframework.org/schema/security
        http://www.springframework.org/schema/security/spring-security.xsd">
 
-       <bean id="dataSource"
+       <bean name="dataSource" id="dataSource"
              class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 
               <property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -15,4 +15,5 @@
               <property name="username" value="root" />
               <property name="password" value="root" />
        </bean>
+
 </beans>

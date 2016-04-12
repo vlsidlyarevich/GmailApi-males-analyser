@@ -6,20 +6,21 @@
           http://www.springframework.org/schema/security
           http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <http auto-config="true">
+    <http auto-config="true" use-expressions="false">
         <intercept-url pattern="/pages/mails.xhtml" access="ROLE_USER"/>
         <form-login login-page="/pages/login.xhtml"
                     default-target-url="/pages/login.xhtml"/>
         <logout logout-success-url="/pages/login.xhtml" />
     </http>
 
-  <!--  <authentication-manager>
+    <!--<authentication-manager>
         <authentication-provider>
             <user-service>
                 <user name="test1" password="1" authorities="ROLE_USER" />
             </user-service>
         </authentication-provider>
     </authentication-manager>-->
+
     <authentication-manager>
         <authentication-provider>
             <jdbc-user-service data-source-ref="dataSource"
@@ -30,4 +31,5 @@
         </authentication-provider>
     </authentication-manager>
 
+    <beans:import resource="spring-database.xml"/>
 </beans:beans>
