@@ -23,11 +23,16 @@
     <h:form>
 
         <ui:include src="/blocks/background-slideshow.html"/>
-        <h:panelGroup layout="block" styleClass="header">
-            <h:link outcome="index" value="Home" styleClass=""/>
-            <h:link outcome="login" value="Sign in" styleClass=""/>
-            <h:outputLink value="#{request.contextPath}/j_spring_security_logout"
-                          styleClass="btn-link">Logout</h:outputLink>
+        <h:panelGroup layout="block" styleClass="header-div">
+            <h:panelGroup layout="block" styleClass="header">
+                <h:outputLabel value="Mail Hunter" styleClass="label header-label"/>
+                <h:panelGroup layout="block" styleClass="links-div">
+                    <h:link outcome="index" value="Home" styleClass="nav-link"/>
+                    <h:link outcome="login" value="Sign in" styleClass="nav-link"/>
+                    <h:outputLink value="#{request.contextPath}/j_spring_security_logout"
+                                  styleClass="btn-link">Logout</h:outputLink>
+                </h:panelGroup>
+            </h:panelGroup>
         </h:panelGroup>
     </h:form>
 </h:body>
