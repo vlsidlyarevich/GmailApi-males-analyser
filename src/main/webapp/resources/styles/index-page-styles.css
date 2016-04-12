@@ -19,10 +19,6 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-td:last-child {
-    padding-left:70%;
-}
-
 .nav-link{
     color:white;
     padding: 10px;
