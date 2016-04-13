@@ -23,28 +23,19 @@
     <h:outputStylesheet library="styles" name="header-styles.css"/>
     <title>Mail Hunter</title>
 </h:head>
+
+
 <h:body>
-
     <form action="/j_spring_security_check" method="post">
-
         <ui:include src="/blocks/background-slideshow.html"/>
-
         <h:panelGroup layout="block" styleClass="wrapper">
-
             <ui:include src="/blocks/header.xhtml"/>
             <h:panelGroup layout="block" styleClass="content">
-
                 <ui:include src="/blocks/login-block.xhtml"/>
-
                 <ui:include src="/blocks/registration-block.xhtml"/>
             </h:panelGroup>
-
             <ui:include src="/blocks/footer.xhtml"/>
-
         </h:panelGroup>
-
-
-
     </form>
 </h:body>
 </html>
