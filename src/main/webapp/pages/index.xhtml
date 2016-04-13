@@ -18,6 +18,7 @@
     <h:outputStylesheet library="styles" name="background-slideshow-styles.css"/>
     <h:outputStylesheet library="styles" name="index-page-styles.css"/>
     <h:outputStylesheet library="styles" name="footer-styles.css"/>
+    <h:outputStylesheet library="styles" name="header-styles.css"/>
     <title>Mail Hunter</title>
 </h:head>
 <h:body>
@@ -26,19 +27,14 @@
         <ui:include src="/blocks/background-slideshow.html"/>
 
         <h:panelGroup layout="block" styleClass="wrapper">
-            <h:panelGroup layout="block" styleClass="header-div">
-                <h:panelGroup layout="block" styleClass="header">
-                    <h:panelGrid columns="2" border="0">
-                        <h:outputLabel value="Mail Hunter" styleClass="label header-label"/>
 
-                        <h:panelGroup layout="block" styleClass="links-div">
-                            <h:link outcome="index" value="Home" styleClass="nav-link"/>
-                            <h:link outcome="login" value="Sign in" styleClass="nav-link"/>
-                            <h:outputLink value="#{request.contextPath}/j_spring_security_logout"
-                                          styleClass="nav-link">Logout</h:outputLink>
-                        </h:panelGroup>
-                    </h:panelGrid>
-                </h:panelGroup>
+            <ui:include src="/blocks/header.xhtml"/>
+            <h:panelGroup layout="block" styleClass="content">
+
+
+
+
+
             </h:panelGroup>
 
             <ui:include src="/blocks/footer.xhtml"/>

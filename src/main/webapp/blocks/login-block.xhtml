@@ -1,0 +1,31 @@
+<f:view
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:panelGroup layout="block" styleClass="login-block-div">
+
+
+        <h:panelGroup layout="block" styleClass="login-block-header">
+            <h:panelGroup layout="block" styleClass="login-block-header-div">
+                <h:outputText value="Sign in" styleClass="login-block-header-label"/>
+            </h:panelGroup>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="input-div form-group">
+            <h:inputText a:placeholder="Username" id="j_username" styleClass="form-control"
+                         required="true"/>
+            <h:inputSecret a:placeholder="Password" id="j_password" styleClass="form-control"
+                           required="true"/>
+        </h:panelGroup>
+        <h:panelGrid columns="2" styleClass="table  button-grid" style="text-align: center" id="button-input-grid">
+            <input type="submit" value="Login" class="btn btn-lg btn-success"/>
+            <h:form>
+                <h:outputLink value="#{request.contextPath}/j_spring_security_logout"
+                              styleClass="btn-link">Logout</h:outputLink>
+            </h:form>
+        </h:panelGrid>
+    </h:panelGroup>
+</f:view>

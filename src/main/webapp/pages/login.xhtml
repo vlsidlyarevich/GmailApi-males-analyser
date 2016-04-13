@@ -17,6 +17,9 @@
     <h:outputScript library="js" name="bootstrap.min.js"/>
     <h:outputStylesheet library="styles" name="background-slideshow-styles.css"/>
     <h:outputStylesheet library="styles" name="login-page-styles.css"/>
+    <h:outputStylesheet library="styles" name="login-block-styles.css"/>
+    <h:outputStylesheet library="styles" name="footer-styles.css"/>
+    <h:outputStylesheet library="styles" name="header-styles.css"/>
     <title>Mail Hunter</title>
 </h:head>
 <h:body>
@@ -26,23 +29,20 @@
         <ui:include src="/blocks/background-slideshow.html"/>
 
         <h:panelGroup layout="block" styleClass="wrapper">
-            <ui:include src="/blocks/header.xhtml"/>
-            <h:panelGrid columns="1" style="text-align: center" styleClass="login-input-grid table"
-                         id="login-input-grid">
-                <h:inputText a:placeholder="Username" id="j_username" styleClass="form-control"
-                             required="true"/>
-                <h:inputSecret a:placeholder="Password" id="j_password" styleClass="form-control"
-                               required="true"/>
-            </h:panelGrid>
-            <h:panelGrid columns="2" styleClass="table  button-grid" style="text-align: center" id="button-input-grid">
-                <input type="submit" value="Login" class="btn btn-lg btn-success"/>
-                <h:form>
-                    <h:outputLink value="#{request.contextPath}/j_spring_security_logout" styleClass="btn-link" >Logout</h:outputLink>
-                </h:form>
-            </h:panelGrid>
 
+            <ui:include src="/blocks/header.xhtml"/>
+            <h:panelGroup layout="block" styleClass="content">
+
+                <ui:include src="/blocks/login-block.xhtml"/>
+
+            </h:panelGroup>
+
+            <ui:include src="/blocks/footer.xhtml"/>
 
         </h:panelGroup>
+
+
+
     </form>
 </h:body>
 </html>
