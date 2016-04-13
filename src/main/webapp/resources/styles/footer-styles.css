@@ -5,6 +5,7 @@
     height: 50px;
     bottom: 0;
     left: 0;
+    position: absolute;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 .footer{
