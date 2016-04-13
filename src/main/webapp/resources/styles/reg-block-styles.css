@@ -1,0 +1,27 @@
+.reg-block-div{
+    margin-left: 15%;
+    margin-top: 15%;
+    background-color: rgba(247, 244, 244, 0.75);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    height: 350px;
+    width: 350px;
+}
+
+.reg-block-header{
+    display: table;
+    width: 100%;
+    height: 80px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.reg-block-header-div{
+    background-color: #d9534f;
+    height: 100%;
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+.reg-block-header-label{
+    margin-top: 25%;
+    color: white;
+    font-size: 225%;
+}

@@ -5,6 +5,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     height: 350px;
     width: 350px;
+    float:left;
 }
 
 .login-block-header{

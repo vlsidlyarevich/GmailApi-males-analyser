@@ -1,0 +1,34 @@
+<f:view
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:panelGroup layout="block" styleClass="login-block-div">
+
+
+        <h:panelGroup layout="block" styleClass="reg-block-header">
+            <h:panelGroup layout="block" styleClass="reg-block-header-div">
+                <h:outputText value="Register" styleClass="reg-block-header-label"/>
+            </h:panelGroup>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="input-div form-group">
+            <h:panelGrid columns="1" style="width: 100%;height: 100%;">
+                <h:inputText a:placeholder="Username"  styleClass="form-control login-input"
+                             />
+                <h:inputSecret a:placeholder="Password"  styleClass="form-control login-input"
+                               />
+                <h:inputSecret a:placeholder="Repeat password" styleClass="form-control login-input"
+                        />
+            </h:panelGrid>
+        </h:panelGroup>
+
+        <h:panelGroup layout="block" styleClass="button-div form-group">
+            <h:panelGrid columns="1" styleClass="table  button-grid" style="text-align: center;">
+                <h:commandButton  value="Register" style="width:80%;" class="btn btn-lg btn-success"/>
+            </h:panelGrid>
+        </h:panelGroup>
+    </h:panelGroup>
+</f:view>
