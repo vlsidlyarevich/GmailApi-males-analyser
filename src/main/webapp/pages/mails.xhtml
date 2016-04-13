@@ -16,6 +16,7 @@
     <h:outputStylesheet library="styles" name="mails-page-styles.css"/>
     <h:outputStylesheet library="styles" name="footer-styles.css"/>
     <h:outputStylesheet library="styles" name="header-styles.css"/>
+    <h:outputStylesheet library="styles" name="command-table-styles.css"/>
     <title>Mail Hunter</title>
 </h:head>
 
@@ -25,12 +26,27 @@
         <ui:include src="/blocks/background-slideshow.html"/>
         <h:panelGroup layout="block" styleClass="wrapper">
             <ui:include src="/blocks/header.xhtml"/>
-            <!--<comp:collapsibleSearchPanel collapsed="#{CollapseController.collapsed}">
-                <ui:include src="/blocks/search-table.xhtml"/>
-            </comp:collapsibleSearchPanel>
-            <h:outputLink value="#{request.contextPath}/j_spring_security_logout"
+            <h:panelGroup layout="block" styleClass="content">
+                <h:panelGroup layout="block" styleClass="mails-block-header">
+                    <h:panelGroup layout="block" styleClass="mails-block-header-div">
+                        <h:outputText value="Message viewer" styleClass="mails-block-header-label"/>
+                    </h:panelGroup>
+                </h:panelGroup>
+
+                <h:panelGroup layout="block" styleClass="comand-panel">
+
+                    <comp:collapsibleSearchPanel collapsed="#{CollapseController.collapsed}">
+                        <ui:include src="/blocks/command-table.xhtml"/>
+                    </comp:collapsibleSearchPanel>
+
+                </h:panelGroup>
+
+            </h:panelGroup>
+
+            <!--<h:outputLink value="#{request.contextPath}/j_spring_security_logout"
                           styleClass="btn-link">Logout</h:outputLink>
             <ui:include src="/blocks/output-table.xhtml"/>-->
+
             <ui:include src="/blocks/footer.xhtml"/>
         </h:panelGroup>
     </h:form>
