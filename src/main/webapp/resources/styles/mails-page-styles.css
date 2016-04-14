@@ -63,26 +63,26 @@ body {
 
 .selected span {
     color: #fff;
-    background-color: #d9534f;
-    border-color: #d43f3a;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
 }
 
 .selected span :hover {
     color: #fff;
-    background-color: #c9302c;
-    border-color: #ac2925;
+    background-color: #398439;
+    border-color: #255625;
 }
 
 .paginator-btn {
-    background-color: #31b0d5;
-    border-color: #269abc;
-    color: white;
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
 }
 
 .paginator-btn:hover {
     color: #fff;
-    background-color: #269abc;
-    border-color: #1b6d85;
+    background-color: #398439;
+    border-color: #255625;
 }
 
 .paginator-dropdown {
