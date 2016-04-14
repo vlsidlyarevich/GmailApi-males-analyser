@@ -35,12 +35,9 @@ body {
     color: white;
     font-size: 225%;
 }
-.comand-panel{
-    height: 15%;
+.command-panel {
+    height: 100%;
     width: 100%;
-
-
-
 }
 
 
@@ -48,28 +45,18 @@ body {
 .search-table {
     height: 15%;
     width: 100%;
-    text-align: right;
+    text-align: left;
     border: 2px solid #d9534f;
     border-top-width: 0px;
 }
 
-.search-panel-grid {
-    border-width: 0;
-    width: 100%;
-    height: 100%;
-    border-collapse: collapse;
-}
+
 
 .grid-output-label {
     font-size: large;
 }
 
-.buttons-div {
-    width: 100%;
-    margin-top: 2%;
-    position: relative;
-    text-align: right;
-}
+
 
 .command-button {
     height: 40px;

@@ -7,34 +7,35 @@
 
     <h:panelGroup layout="block" styleClass="search-table ">
 
-        <h:panelGrid styleClass="search-panel-grid" id="searchPanelGrid" columns="4" cellpadding="10" cellspacing="0">
-            <h:outputText value="Sender:" styleClass="grid-output-label"/>
-            <h:inputText id="senderInput" styleClass="form-control grid-input-field"
-                         a:placeholder="sender"/>
+        <h:panelGroup layout="block" styleClass="checkbox-div">
+            <h:panelGrid styleClass="search-panel-grid" cellpadding="5" columns="2">
 
-            <h:outputText value="Title:" styleClass="grid-output-label"/>
-            <h:inputText id="titleInput" styleClass="form-control grid-input-field"
-                         a:placeholder="title"/>
 
-            <h:outputText value="Date:" styleClass="grid-output-label"/>
-            <h:inputText id="dateInput" styleClass="form-control grid-input-field"
-                         a:placeholder="date"/>
+                <h:selectBooleanCheckbox value="#{availableStoresController.steamCheck}"/>
+                <h:outputText value="Steam"/>
 
-            <h:outputText value="Keyword:" styleClass="grid-output-label"/>
-            <h:inputText id="keywordInput" styleClass="form-control grid-input-field"
-                         a:placeholder="keyword"/>
+                <h:selectBooleanCheckbox value="#{availableStoresController.aliExpressCheck}"/>
+                <h:outputText value="Ali express"/>
 
-        </h:panelGrid>
+                <h:selectBooleanCheckbox value="#{availableStoresController.originCheck}"/>
+                <h:outputText value="Origin"/>
 
-    </h:panelGroup>
+            </h:panelGrid>
+        </h:panelGroup>
 
-    <h:panelGroup layout="block" styleClass="buttons-div">
-        <h:commandButton value="Search" styleClass="btn btn-info command-button">
-            <f:ajax execute="@form" render="@form"/>
-        </h:commandButton>
-        <h:commandButton value="Reset" style="margin-left: 2%; margin-right: 1%" styleClass="btn btn-danger command-button">
-            <f:ajax execute="@form" render="@form"/>
-        </h:commandButton>
+
+        <h:panelGroup layout="block" styleClass="buttons-div">
+            <h:panelGrid columns="1" styleClass="buttons-panel-grid">
+                <h:commandButton value="Analyse" styleClass="btn btn-lg btn-success">
+                    <f:ajax execute="@form" render="@form"/>
+                </h:commandButton>
+                <h:commandButton value="Reset" styleClass="btn btn-danger command-button">
+                    <f:ajax execute="@form" render="@form"/>
+                </h:commandButton>
+            </h:panelGrid>
+        </h:panelGroup>
+
+
     </h:panelGroup>
 
 </f:view>

@@ -1,0 +1,23 @@
+.checkbox-div{
+    height:100%;
+    width:50%;
+}
+
+
+.search-panel-grid {
+    border-width: 0;
+    margin-left: 5%;
+    width:50%;
+    height: 100%;
+    border-collapse: collapse;
+}
+
+.buttons-div {
+    width: 100%;
+    margin-top: 2%;
+    position: relative;
+    text-align: right;
+}
+.buttons-panel-grid{
+    width: 100%;
+}
