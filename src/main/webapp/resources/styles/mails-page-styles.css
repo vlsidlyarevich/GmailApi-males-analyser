@@ -35,29 +35,9 @@ body {
     color: white;
     font-size: 225%;
 }
-.command-panel {
-    height: 100%;
-    width: 100%;
-}
-
-
-
-.search-table {
-    height: 15%;
-    width: 100%;
-    text-align: left;
-    border: 2px solid #d9534f;
-    border-top-width: 0px;
-}
-
-
-
 .grid-output-label {
     font-size: large;
 }
-
-
-
 .command-button {
     height: 40px;
     width: 80px;
@@ -76,64 +56,6 @@ body {
     margin-right: 1%;
 }
 
-.output-table {
-    margin-top: 10%;
-}
-
-.messages-output-header {
-    color: white;
-    height: 45px;
-    background-color: #d9534f;
-    text-align: center;
-}
-
-.id-header {
-    width: 20%;
-}
-
-.messages-output-table {
-    border-color: #d9534f;
-    border-collapse: collapse;
-    height: 400px;
-    margin-bottom: 0px;
-}
-
-.snippet-header {
-    text-align: center;
-    border-top: 0;
-    border-left: 2px solid black;
-}
-
-.buttons-header {
-    width: 10%;
-}
-
-.product-output-result {
-    vertical-align: middle;
-    font-size: medium;
-    color: black;
-}
-
-.product-output-result:hover, .product-output-result:focus {
-    color: #d9534f;
-    text-decoration: none;
-}
-
-.product-output-snippet {
-    text-align: left;
-}
-
-.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
-    text-align: left;
-    vertical-align: middle;
-    border: 2px solid #d9534f;
-    border-collapse: collapse;
-}
-
-.table td + td {
-    text-align: right;
-    border-left: none;
-}
 
 .paginator {
     text-align: right;
@@ -164,6 +86,7 @@ body {
 }
 
 .paginator-dropdown {
+    margin-right: 1%;
     color: #fff;
     background-color: #d9534f;
     border-color: #d43f3a;

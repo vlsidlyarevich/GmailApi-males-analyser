@@ -1,0 +1,26 @@
+.output-table {
+    margin-top: -10%;
+}
+.ui-accordion .ui-accordion-header {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+.ui-accordion .ui-accordion-header :hover {
+    color: #fff!important;
+    background-color: #c9302c!important;
+    border-color: #ac2925!important;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    text-shadow: none!important;
+    font-weight: normal!important;
+    background: none!important;
+    color: #fff!important;
+    background-color: #d9534f!important;
+    border-color: #d43f3a!important;
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+    color: #fff!important;
+    background-color: #d9534f!important;
+    border-color: #d43f3a!important;
+}

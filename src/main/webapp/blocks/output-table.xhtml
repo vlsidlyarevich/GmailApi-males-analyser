@@ -5,46 +5,12 @@
         xmlns:f="http://java.sun.com/jsf/core"
         xmlns:p="http://primefaces.org/ui">
 
-    <!--<h:panelGroup layout="block" styleClass="output-table">
 
-        <ui:include src="/blocks/paginator.xhtml"/>
 
-        <div class="panel-group" id="accordion" style="margin-bottom: 0px;">
-            <h:dataTable border="1" styleClass="messageModels-output-table table " id="messageModels-output-table"
-                         value="#{messagesBean.getSublist()}" var="messageModel" binding="#{table}">
-                <h:column headerClass="messageModels-output-header snippet-header">
-                    <f:facet name="header">
-                        Messages
-                    </f:facet>
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse#{table.rowIndex}"
-                       class="product-output-result product-output-snippet">#{messageModel.snippet}</a>
-
-                    <div id="collapse#{table.rowIndex}" class="collapse panel-collapse">
-                        <h:outputText value="#{messageModel.body}"/>
-                    </div>
-                </h:column>
-            </h:dataTable>
-        </div>
-
-        <ui:include src="/blocks/paginator.xhtml"/>
-    </h:panelGroup>-->
 
     <h:panelGroup layout="block" styleClass="output-table">
-        <!--
-
-                <p:dataTable var="messageModel" value="#{messagesBean.getSublist()}" paginator="true" rows="5"
-                             rowsPerPageTemplate="5,8"  lazy="true"
-                             paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}">
-
-                    <p:column>
-                        <h:outputText value="#{messageModel.body}"/>
-                    </p:column>
-
-                </p:dataTable>
-        -->
 
         <ui:include src="/blocks/paginator.xhtml"/>
-
 
         <p:accordionPanel var="messageModel" value="#{messagesBean.getSublist()}">
             <p:tab title="#{messageModel.snippet}">

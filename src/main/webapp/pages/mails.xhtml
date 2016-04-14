@@ -17,6 +17,7 @@
     <h:outputStylesheet library="styles" name="footer-styles.css"/>
     <h:outputStylesheet library="styles" name="header-styles.css"/>
     <h:outputStylesheet library="styles" name="command-table-styles.css"/>
+    <h:outputStylesheet library="styles" name="output-table-styles.css"/>
     <title>Mail Hunter</title>
 </h:head>
 
@@ -41,11 +42,9 @@
 
                 </h:panelGroup>
 
-            </h:panelGroup>
+                <ui:include src="/blocks/output-table.xhtml"/>
 
-            <!--<h:outputLink value="#{request.contextPath}/j_spring_security_logout"
-                          styleClass="btn-link">Logout</h:outputLink>
-            <ui:include src="/blocks/output-table.xhtml"/>-->
+            </h:panelGroup>
 
             <ui:include src="/blocks/footer.xhtml"/>
         </h:panelGroup>
