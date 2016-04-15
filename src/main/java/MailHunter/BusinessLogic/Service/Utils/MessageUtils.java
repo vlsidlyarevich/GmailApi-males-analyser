@@ -1,6 +1,6 @@
-package com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Utils;
+package MailHunter.BusinessLogic.Service.Utils;
 
-import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Models.MessageModel;
+import MailHunter.BusinessLogic.Models.MessageModel;
 import com.google.api.services.gmail.model.Message;
 import com.google.api.services.gmail.model.MessagePartHeader;
 import org.apache.commons.codec.DecoderException;

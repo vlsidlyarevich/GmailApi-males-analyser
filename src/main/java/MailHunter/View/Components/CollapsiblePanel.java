@@ -1,4 +1,4 @@
-package com.github.vlsidlyarevich.GMailQuickStart.View.Components;
+package MailHunter.View.Components;
 
 
 import javax.el.ELContext;

@@ -1,7 +1,6 @@
-package com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Beans;
+package MailHunter.BusinessLogic.Beans;
 
-
-import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Models.MessageModel;
+import MailHunter.BusinessLogic.Models.MessageModel;
 import org.apache.commons.codec.DecoderException;
 
 import javax.annotation.PostConstruct;
@@ -53,10 +52,6 @@ public class MessagesBean implements Serializable {
         }
         return messageModels.subList(startPosition, endPosition);
     }
-
-
-
-
 
     public void action(AjaxBehaviorEvent event) throws javax.faces.event.AbortProcessingException {
         currentPage = (Integer) event.getComponent().getAttributes().get("index") - 1;

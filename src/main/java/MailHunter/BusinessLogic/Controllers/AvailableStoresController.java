@@ -1,4 +1,4 @@
-package com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Controllers;
+package MailHunter.BusinessLogic.Controllers;
 
 
 import javax.faces.bean.ManagedBean;

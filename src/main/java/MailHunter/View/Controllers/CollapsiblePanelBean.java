@@ -1,4 +1,4 @@
-package com.github.vlsidlyarevich.GMailQuickStart.View.Controllers;
+package MailHunter.View.Controllers;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;

@@ -1,4 +1,4 @@
-package com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Models;
+package MailHunter.BusinessLogic.Models;
 
 
 import java.util.List;

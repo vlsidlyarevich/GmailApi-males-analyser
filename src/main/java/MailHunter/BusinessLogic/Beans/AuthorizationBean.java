@@ -1,8 +1,8 @@
-package com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Beans;
+package MailHunter.BusinessLogic.Beans;
 
-import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Models.MessageModel;
-import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Gmail.GmailServices;
-import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Utils.MessageUtils;
+import MailHunter.BusinessLogic.Models.MessageModel;
+import MailHunter.BusinessLogic.Service.Gmail.GmailServices;
+import MailHunter.BusinessLogic.Service.Utils.MessageUtils;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -52,7 +52,7 @@ public class AuthorizationBean {
         }
 
 
-        service = GmailServices.getGmailService(JSON_FACTORY, HTTP_TRANSPORT, DATA_STORE_FACTORY, SCOPES
+        service =MailHunter.BusinessLogic.Service.Gmail.GmailServices.getGmailService(JSON_FACTORY, HTTP_TRANSPORT, DATA_STORE_FACTORY, SCOPES
                 , DATA_STORE_DIR, APPLICATION_NAME);
 
     }

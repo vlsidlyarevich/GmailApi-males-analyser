@@ -1,7 +1,7 @@
-package com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Gmail;
+package MailHunter.BusinessLogic.Service.Gmail;
 
-import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Client.MailHunter;
-import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Authorization.AuthorizeUtils;
+import MailHunter.BusinessLogic.Client.MailHunter;
+import MailHunter.BusinessLogic.Service.Authorization.AuthorizeUtils;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -12,9 +12,7 @@ import com.google.api.services.gmail.model.Message;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by Администратор on 23.03.2016.
- */
+
 public final class GmailServices {
 
     private GmailServices(){
@@ -30,8 +28,8 @@ public final class GmailServices {
                                         List<String> SCOPES,java.io.File DATA_STORE_DIR,String APPLICATION_NAME)
                                         throws IOException {
 
-        Credential credential = AuthorizeUtils.authorize(MailHunter.class,JSON_FACTORY,HTTP_TRANSPORT,DATA_STORE_FACTORY,
-                SCOPES,DATA_STORE_DIR);
+        Credential credential = AuthorizeUtils.authorize(MailHunter.class, JSON_FACTORY, HTTP_TRANSPORT, DATA_STORE_FACTORY,
+                SCOPES, DATA_STORE_DIR);
         return new Gmail.Builder(HTTP_TRANSPORT, JSON_FACTORY, credential)
                 .setApplicationName(APPLICATION_NAME)
                 .build();

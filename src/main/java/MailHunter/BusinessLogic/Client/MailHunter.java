@@ -1,8 +1,8 @@
-package com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Client;
+package MailHunter.BusinessLogic.Client;
 
 
-import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Gmail.GmailServices;
-import com.github.vlsidlyarevich.GMailQuickStart.BusinessLogic.Service.Utils.MessageUtils;
+import MailHunter.BusinessLogic.Service.Gmail.GmailServices;
+import MailHunter.BusinessLogic.Service.Utils.MessageUtils;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
