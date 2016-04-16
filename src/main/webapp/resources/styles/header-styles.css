@@ -23,3 +23,7 @@
     color:white;
     padding: 10px;
 }
+
+a:focus, a:hover{
+    color:white;
+}

@@ -11,6 +11,9 @@
 .item-text{
     width: 100%;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .carousel-inner>.active, .carousel-inner>.next, .carousel-inner>.prev {
     display: flex;
