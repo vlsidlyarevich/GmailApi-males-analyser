@@ -1,0 +1,38 @@
+.carousel{
+    margin-top: 5%;
+}
+.slide-wrapper{
+    width: 100%;
+    color: white;
+}
+.item{
+    background-color: #d9534f;
+}
+.item-text{
+    width: 100%;
+    text-align: center;
+}
+.carousel-inner>.active, .carousel-inner>.next, .carousel-inner>.prev {
+    display: flex;
+}
+.carousel-ind{
+    background: none;
+}
+.carousel-indicators {
+    position: inherit;
+    bottom: 10px;
+    left: 50%;
+    z-index: 15;
+    width: 100%;
+    margin-top: 1%;
+    padding-left: 0;
+    margin-left: 0;
+    text-align: center;
+    list-style: none;
+}
+.carousel-indicators .active{
+    background-color: #d9534f;
+}
+.carousel-indicators li{
+    border: 1px solid #d9534f;
+}
