@@ -13,13 +13,6 @@
         <logout logout-success-url="/pages/login.xhtml" />
     </http>
 
-    <!--<authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="test1" password="1" authorities="ROLE_USER" />
-            </user-service>
-        </authentication-provider>
-    </authentication-manager>-->
 
     <authentication-manager>
         <authentication-provider>
@@ -32,4 +25,5 @@
     </authentication-manager>
 
     <beans:import resource="spring-database.xml"/>
+
 </beans:beans>
