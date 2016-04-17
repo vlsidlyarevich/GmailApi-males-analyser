@@ -4,10 +4,7 @@ package MailHunter.DataAccess.model;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.domain.Persistable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
@@ -15,6 +12,7 @@ public class User implements Persistable<Integer> {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id",unique = true,nullable = false)
     private Integer id;
 
@@ -29,9 +27,8 @@ public class User implements Persistable<Integer> {
         super();
     }
 
-    public User(Integer id, String username, String password, String role) {
+    public User( String username, String password, String role) {
         super();
-        this.id = id;
         this.username = username;
         this.password = password;
         this.role = role;

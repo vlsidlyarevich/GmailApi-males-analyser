@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://java.sun.com/xml/ns/persistence"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+             http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd" version="2.0">
+    <persistence-unit name="hib-jpa-persistence-unit" transaction-type="RESOURCE_LOCAL">
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" value="validate"/>
+            <!--<property name="hibernate.hbm2ddl.auto" value="create"/>-->
+            <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

@@ -24,6 +24,6 @@
         </authentication-provider>
     </authentication-manager>
 
-    <beans:import resource="spring-database.xml"/>
+    <beans:import resource="spring-db-context.xml"/>
 
 </beans:beans>
