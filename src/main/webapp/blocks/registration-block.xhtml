@@ -16,10 +16,11 @@
 
         <h:panelGroup layout="block" styleClass="reg-input-div form-group">
             <h:panelGrid columns="1" style="width: 100%;height: 100%;">
-                <h:inputText a:placeholder="Username"  styleClass="form-control login-input"
-                             />
-                <h:inputSecret a:placeholder="Password"  styleClass="form-control login-input"
-                               />
+                <h:inputText a:placeholder="Username" value="#{userBean.userName}" styleClass="form-control login-input"
+                        />
+                <h:inputSecret a:placeholder="Password" value="#{userBean.password}"
+                               styleClass="form-control login-input"
+                        />
                 <h:inputSecret a:placeholder="Repeat password" styleClass="form-control login-input"
                         />
             </h:panelGrid>
@@ -27,7 +28,9 @@
 
         <h:panelGroup layout="block" styleClass="button-div form-group">
             <h:panelGrid columns="1" styleClass="table  button-grid" style="text-align: center;">
-                <h:commandButton  value="Register" style="width:80%;" class="btn btn-lg btn-success"/>
+                <h:commandButton value="Register" action="#{userBean.addUser()}" style="width:80%;" class="btn btn-lg btn-success">
+                    <f:ajax></f:ajax>
+                </h:commandButton>
             </h:panelGrid>
         </h:panelGroup>
     </h:panelGroup>
