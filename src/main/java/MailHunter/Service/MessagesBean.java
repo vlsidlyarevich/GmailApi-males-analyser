@@ -1,4 +1,4 @@
-package MailHunter.BusinessLogic.Beans;
+package MailHunter.Service;
 
 import MailHunter.BusinessLogic.Models.MessageModel;
 import org.apache.commons.codec.DecoderException;

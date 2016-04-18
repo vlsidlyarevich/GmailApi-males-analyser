@@ -26,16 +26,20 @@
 
 
 <h:body>
-    <form action="/j_spring_security_check" method="post">
-        <ui:include src="/blocks/background-slideshow.html"/>
-        <h:panelGroup layout="block" styleClass="wrapper">
-            <ui:include src="/blocks/header.xhtml"/>
-            <h:panelGroup layout="block" styleClass="content">
+    <ui:include src="/blocks/background-slideshow.html"/>
+    <h:panelGroup layout="block" styleClass="wrapper">
+        <ui:include src="/blocks/header.xhtml"/>
+        <h:panelGroup layout="block" styleClass="content">
+
+            <!--<form action="/j_spring_security_check" method="post">
                 <ui:include src="/blocks/login-block.xhtml"/>
-                <ui:include src="/blocks/registration-block.xhtml"/>
-            </h:panelGroup>
-            <ui:include src="/blocks/footer.xhtml"/>
+            </form>-->
+            <h:form>
+            <ui:include src="/blocks/registration-block.xhtml"/>
+            </h:form>
         </h:panelGroup>
-    </form>
+        <ui:include src="/blocks/footer.xhtml"/>
+    </h:panelGroup>
+
 </h:body>
 </html>

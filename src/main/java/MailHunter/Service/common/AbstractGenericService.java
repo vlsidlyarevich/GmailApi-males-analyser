@@ -121,6 +121,7 @@ public abstract class AbstractGenericService<T extends Persistable<ID>, ID exten
     }
 
     public <S extends T> S save(S entity) {
+        System.out.println("Saving into database:" + entity);
         LOGGER.info("Saving {} into database", entity);
         S saved = repository.save(entity);
         LOGGER.debug("Successfully saved: {}", saved);

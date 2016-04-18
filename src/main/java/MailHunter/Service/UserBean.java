@@ -1,4 +1,4 @@
-package MailHunter.BusinessLogic.Beans;
+package MailHunter.Service;
 
 import MailHunter.DataAccess.model.User;
 import MailHunter.Service.UserService;
@@ -43,4 +43,5 @@ public class UserBean implements Serializable{
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
