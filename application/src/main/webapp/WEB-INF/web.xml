@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <display-name>GMailApiMalesAnalyserGUI</display-name>
+    <display-name>MailHunter</display-name>
 
     <!-- Welcome page -->
     <welcome-file-list>
@@ -14,7 +14,7 @@
     <!-- Change to "Production" when you are ready to deploy -->
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
-        <param-value>Production </param-value>
+        <param-value>Production</param-value>
     </context-param>
 
 
@@ -30,7 +30,6 @@
     </servlet-mapping>
 
 
-
     <!--Spring Security filter-->
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
@@ -44,7 +43,8 @@
     <!--Spring context configuration file location-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:*spring-security.xml</param-value>
+        <param-value>classpath:*spring-security.xml,classpath*:spring-services-context.xml,
+        classpath*:spring-db-context.xml</param-value>
     </context-param>
 
     <listener>

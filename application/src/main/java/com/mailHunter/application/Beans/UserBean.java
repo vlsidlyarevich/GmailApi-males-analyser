@@ -1,7 +1,7 @@
 package com.mailHunter.application.Beans;
 
-import MailHunter.DataAccess.model.User;
-import MailHunter.Service.UserService;
+import com.mailHunter.security.dataAccess.model.User;
+import com.mailHunter.security.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

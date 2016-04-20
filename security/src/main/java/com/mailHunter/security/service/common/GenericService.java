@@ -1,4 +1,4 @@
-package com.mailHunter.security.Service.common;
+package com.mailHunter.security.service.common;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

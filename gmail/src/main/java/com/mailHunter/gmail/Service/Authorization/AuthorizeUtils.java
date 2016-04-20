@@ -1,6 +1,6 @@
 package com.mailHunter.gmail.Service.Authorization;
 
-import MailHunter.BusinessLogic.Client.MailHunter;
+
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -9,6 +9,7 @@ import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
+import com.mailHunter.gmail.Client.MailHunter;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,9 +24,9 @@ public final class AuthorizeUtils {
      * @return an authorized Credential object.
      * @throws IOException
      */
-    public static Credential authorize(Class<MailHunter> salesAnalyser,JsonFactory JSON_FACTORY,
-                                       HttpTransport HTTP_TRANSPORT,FileDataStoreFactory DATA_STORE_FACTORY,
-                                       List<String> SCOPES,File DATA_STORE_DIR) throws IOException {
+    public static Credential authorize(Class<MailHunter> salesAnalyser, JsonFactory JSON_FACTORY,
+                                       HttpTransport HTTP_TRANSPORT, FileDataStoreFactory DATA_STORE_FACTORY,
+                                       List<String> SCOPES, File DATA_STORE_DIR) throws IOException {
         // Load client secrets.
         InputStream in =
                MailHunter.class.getResourceAsStream("/client_secret.json");

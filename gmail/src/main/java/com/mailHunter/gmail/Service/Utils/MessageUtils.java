@@ -1,8 +1,8 @@
 package com.mailHunter.gmail.Service.Utils;
 
-import MailHunter.BusinessLogic.Models.MessageModel;
 import com.google.api.services.gmail.model.Message;
 import com.google.api.services.gmail.model.MessagePartHeader;
+import com.mailHunter.gmail.Models.MessageModel;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Base64;
 

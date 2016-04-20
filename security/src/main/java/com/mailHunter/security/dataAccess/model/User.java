@@ -1,4 +1,4 @@
-package com.mailHunter.security.DataAccess.model;
+package com.mailHunter.security.dataAccess.model;
 
 
 import org.springframework.data.annotation.Transient;

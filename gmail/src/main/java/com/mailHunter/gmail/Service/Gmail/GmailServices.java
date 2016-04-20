@@ -1,13 +1,13 @@
 package com.mailHunter.gmail.Service.Gmail;
 
-import MailHunter.BusinessLogic.Client.MailHunter;
-import MailHunter.BusinessLogic.Service.Authorization.AuthorizeUtils;
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.model.Message;
+import com.mailHunter.gmail.Client.MailHunter;
+import com.mailHunter.gmail.Service.Authorization.AuthorizeUtils;
 
 import java.io.IOException;
 import java.util.List;

@@ -14,7 +14,7 @@
         http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
        <context:annotation-config/>
-       <context:component-scan base-package="MailHunter.DataAccess"/>
+       <context:component-scan base-package="com.mailHunter.security.dataAccess"/>
 
        <tx:annotation-driven mode="proxy" transaction-manager="transactionManager"/>
 
@@ -27,7 +27,7 @@
               <property name="url" value="${jdbc.url}"/>
        </bean>
 
-       <jpa:repositories base-package="MailHunter.DataAccess"/>
+       <jpa:repositories base-package="com.mailHunter.security.dataAccess"/>
 
        <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
               <property name="entityManagerFactory" ref="entityManagerFactory"/>
@@ -47,7 +47,7 @@
        <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
               <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"/>
               <property name="persistenceUnitName" value="hib-jpa-persistence-unit"/>
-              <property name="packagesToScan" value="MailHunter.DataAccess.model"/>
+              <property name="packagesToScan" value="com.mailHunter.security.dataAccess.model"/>
               <property name="dataSource" ref="dataSource"/>
               <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
               <property name="jpaDialect" ref="jpaDialect"/>

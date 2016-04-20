@@ -1,6 +1,7 @@
 package com.mailHunter.application.Beans;
 
-import MailHunter.BusinessLogic.Models.MessageModel;
+
+import com.mailHunter.gmail.Models.MessageModel;
 import org.apache.commons.codec.DecoderException;
 
 import javax.annotation.PostConstruct;

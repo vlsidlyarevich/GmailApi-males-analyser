@@ -1,8 +1,6 @@
 package com.mailHunter.gmail.Client;
 
 
-import MailHunter.BusinessLogic.Service.Gmail.GmailServices;
-import MailHunter.BusinessLogic.Service.Utils.MessageUtils;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
@@ -12,6 +10,8 @@ import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.GmailScopes;
 import com.google.api.services.gmail.model.ListMessagesResponse;
 import com.google.api.services.gmail.model.Message;
+import com.mailHunter.gmail.Service.Gmail.GmailServices;
+import com.mailHunter.gmail.Service.Utils.MessageUtils;
 import org.apache.commons.codec.DecoderException;
 
 import java.io.IOException;
