@@ -13,7 +13,6 @@ public class MessageModel {
     private String snippet;
     private String body;
     private String htmlBody;
-    private Boolean bodyView;
 
     public MessageModel() {
     }
@@ -32,7 +31,9 @@ public class MessageModel {
 
 
     public String getSender() {
+        if(sender!=null)
         return sender;
+        else return "sender unknown";
     }
 
     public void setSender(String sender) {
@@ -40,7 +41,9 @@ public class MessageModel {
     }
 
     public String getId() {
+        if(id!=null)
         return id;
+        else return "id unknown";
     }
 
     public void setId(String id) {
@@ -56,7 +59,9 @@ public class MessageModel {
     }
 
     public String getReceivingDate() {
+        if(receivingDate!=null)
         return receivingDate;
+        else return "unknown receiving date";
     }
 
     public void setReceivingDate(String receivingDate) {
@@ -64,7 +69,9 @@ public class MessageModel {
     }
 
     public String getDate() {
+        if(date!=null)
         return date;
+        else return "date unknown";
     }
 
     public void setDate(String date) {
@@ -72,7 +79,9 @@ public class MessageModel {
     }
 
     public String getSnippet() {
+        if(snippet!=null)
         return snippet;
+        else return "";
     }
 
     public void setSnippet(String snippet) {
@@ -80,7 +89,9 @@ public class MessageModel {
     }
 
     public String getBody() {
+        if(body!=null)
         return body;
+        else return "";
     }
 
     public void setBody(String body) {
@@ -88,18 +99,12 @@ public class MessageModel {
     }
 
     public String getHtmlBody() {
+        if(htmlBody!=null)
         return htmlBody;
+        else return "";
     }
 
     public void setHtmlBody(String htmlBody) {
         this.htmlBody = htmlBody;
-    }
-
-    public Boolean getBodyView() {
-        return bodyView;
-    }
-
-    public void setBodyView(Boolean bodyView) {
-        this.bodyView = bodyView;
     }
 }

@@ -80,6 +80,12 @@
             <artifactId>google-oauth-client-jetty</artifactId>
             <version>1.21.0</version>
         </dependency>
+        <!--Jsoup-->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.9.1</version>
+        </dependency>
         <!--Spring security dependencies-->
         <dependency>
             <groupId>org.springframework.security</groupId>
@@ -111,11 +117,14 @@
             <version>${hibernate.version}</version>
         </dependency>
 
+        <!--SQL support-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.connector.version}</version>
         </dependency>
+
+        <!--Tests-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

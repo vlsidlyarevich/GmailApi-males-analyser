@@ -1,9 +1,9 @@
 package com.mailHunter.security.service.impl;
 
 
-import com.mailHunter.security.service.UserService;
 import com.mailHunter.security.dataAccess.model.User;
 import com.mailHunter.security.dataAccess.repository.UserRepository;
+import com.mailHunter.security.service.UserService;
 import com.mailHunter.security.service.common.AbstractGenericService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

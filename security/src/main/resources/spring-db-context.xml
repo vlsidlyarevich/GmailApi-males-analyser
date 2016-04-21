@@ -27,7 +27,7 @@
               <property name="url" value="${jdbc.url}"/>
        </bean>
 
-       <jpa:repositories base-package="com.mailHunter.security.dataAccess"/>
+       <jpa:repositories base-package="com.mailHunter.security"/>
 
        <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
               <property name="entityManagerFactory" ref="entityManagerFactory"/>
@@ -52,4 +52,5 @@
               <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
               <property name="jpaDialect" ref="jpaDialect"/>
        </bean>
+
 </beans>

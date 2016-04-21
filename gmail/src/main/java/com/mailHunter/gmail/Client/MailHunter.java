@@ -10,6 +10,7 @@ import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.GmailScopes;
 import com.google.api.services.gmail.model.ListMessagesResponse;
 import com.google.api.services.gmail.model.Message;
+import com.mailHunter.gmail.Models.MessageModel;
 import com.mailHunter.gmail.Service.Gmail.GmailServices;
 import com.mailHunter.gmail.Service.Utils.MessageUtils;
 import org.apache.commons.codec.DecoderException;
@@ -50,12 +51,13 @@ public class MailHunter {
         ListMessagesResponse listResponse =
                 service.users().messages().list(user).execute();
         List<Message> messages = listResponse.getMessages();
+        MessageModel model;
         if (messages.size() == 0) {
             System.out.println("No messages found.");
         } else {
             System.out.println("Messages:");
             for (Message message : messages) {
-               MessageUtils.parseMessage(GmailServices.getMessage(service, user, message.getId()));
+             model =  MessageUtils.parseMessage(GmailServices.getMessage(service, user, message.getId()));
             }
         }
     }

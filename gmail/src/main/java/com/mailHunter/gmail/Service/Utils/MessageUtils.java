@@ -32,12 +32,17 @@ public final class MessageUtils {
 
         for (int i = 0;i< message.getPayload().getParts().size();i++) {
 
-            byte[] decodedBytes = Base64.decodeBase64(message.getPayload().getParts().get(i)
+            if(message.getPayload().getParts().get(i).getMimeType().equalsIgnoreCase("text/plain")){
+
+                byte[] decodedBytes = Base64.decodeBase64(message.getPayload().getParts().get(i)
                     .getBody().getData().replace('-', '+').replace('_', '/').getBytes(StandardCharsets.UTF_8));
-            if(i == 0){
+
                 result.setBody(new String(decodedBytes, "UTF-8"));
             }
-            if(i == 1){
+            if(message.getPayload().getParts().get(i).getMimeType().equalsIgnoreCase("text/html")) {
+                byte[] decodedBytes = Base64.decodeBase64(message.getPayload().getParts().get(i)
+                        .getBody().getData().replace('-', '+').replace('_', '/').getBytes(StandardCharsets.UTF_8));
+
                 result.setHtmlBody(new String(decodedBytes, "UTF-8"));
             }
         }
