@@ -32,14 +32,18 @@
         <h:panelGroup layout="block" styleClass="content">
 
 
-            <form action="/j_spring_security_check" method="post">
-                <ui:include src="/blocks/login-block.xhtml"/>
+            <!--<form action="/j_spring_security_check" method="post">-->
+                <!--<ui:include src="/blocks/login-block.xhtml"/>-->
+                <!--<ui:include src="/blocks/registration-block.xhtml"/>-->
+            <!--</form>-->
+            <h:form>
                 <ui:include src="/blocks/registration-block.xhtml"/>
-            </form>
-        </h:panelGroup>
+           </h:form>
 
-        <ui:include src="/blocks/footer.xhtml"/>
-    </h:panelGroup>
+       </h:panelGroup>
+
+       <ui:include src="/blocks/footer.xhtml"/>
+   </h:panelGroup>
 
 </h:body>
 </html>

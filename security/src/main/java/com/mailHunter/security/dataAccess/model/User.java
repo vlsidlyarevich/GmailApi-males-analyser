@@ -35,10 +35,12 @@ public class User implements Persistable<Integer> {
     }
 
     @Transient
+    @Override
     public boolean isNew() {
         return id == null;
     }
 
+    @Override
     public Integer getId() {
         return id;
     }

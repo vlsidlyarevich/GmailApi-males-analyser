@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 @Transactional
 public abstract class AbstractGenericService<T extends Persistable<ID>, ID extends Serializable,
-        REPO extends JpaRepository<T, ID>> implements com.mailHunter.security.service.common.GenericService<T, ID> {
+        REPO extends JpaRepository<T, ID>> implements GenericService<T, ID> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AbstractGenericService.class);
 

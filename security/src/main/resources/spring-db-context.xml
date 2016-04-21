@@ -52,5 +52,4 @@
               <property name="jpaVendorAdapter" ref="jpaVendorAdapter"/>
               <property name="jpaDialect" ref="jpaDialect"/>
        </bean>
-
 </beans>
