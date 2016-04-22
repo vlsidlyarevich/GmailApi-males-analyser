@@ -24,28 +24,60 @@ public final class MessageUtils {
         result.setLabels(message.getLabelIds());
         result.setSnippet(message.getSnippet());
 
-        for (MessagePartHeader part : message.getPayload().getHeaders()) {
-            if (part.getName().equals("Received")) result.setReceivingDate(part.getValue());
-            if (part.getName().equals("From")) result.setSender(part.getValue());
-            if (part.getName().equals("Date")) result.setDate(part.getValue());
+
+            for (MessagePartHeader part : message.getPayload().getHeaders()) {
+                if (part.getName().equals("Received") && part.getValue() != null)
+                    result.setReceivingDate(part.getValue());
+                if (part.getName().equals("From") && part.getValue() != null) result.setSender(part.getValue());
+                if (part.getName().equals("Date") && part.getValue() != null) result.setDate(part.getValue());
+            }
+
+        if(message.getPayload().getParts()!=null) {
+
+            for (int i = 0; i < message.getPayload().getParts().size(); i++) {
+
+                if (message.getPayload().getParts().get(i).getMimeType().equalsIgnoreCase("text/plain")) {
+                    if (message.getPayload().getParts().get(i).getBody().getData() != null) {
+
+                        byte[] decodedBytes = Base64.decodeBase64(message.getPayload().getParts().get(i)
+                                .getBody().getData().replace('-', '+').replace('_', '/').getBytes(StandardCharsets.UTF_8));
+
+                        result.setBody(new String(decodedBytes, "UTF-8"));
+                    }
+                }
+                if (message.getPayload().getParts().get(i).getMimeType().equalsIgnoreCase("text/html")) {
+                    if (message.getPayload().getParts().get(i).getBody().getData() != null) {
+                        byte[] decodedBytes = Base64.decodeBase64(message.getPayload().getParts().get(i)
+                                .getBody().getData().replace('-', '+').replace('_', '/').getBytes(StandardCharsets.UTF_8));
+
+                        result.setHtmlBody(new String(decodedBytes, "UTF-8"));
+                    }
+                }
+            }
+        }
+        else{
+
+            if (message.getPayload().getMimeType().equalsIgnoreCase("text/plain")) {
+                if (message.getPayload().getBody().getData() != null) {
+
+                    byte[] decodedBytes = Base64.decodeBase64(message.getPayload()
+                            .getBody().getData().replace('-', '+').replace('_', '/').getBytes(StandardCharsets.UTF_8));
+
+                    result.setBody(new String(decodedBytes, "UTF-8"));
+                }
+            }
+            if (message.getPayload().getMimeType().equalsIgnoreCase("text/html")) {
+                if (message.getPayload().getBody().getData() != null) {
+                    byte[] decodedBytes = Base64.decodeBase64(message.getPayload()
+                            .getBody().getData().replace('-', '+').replace('_', '/').getBytes(StandardCharsets.UTF_8));
+
+                    result.setHtmlBody(new String(decodedBytes, "UTF-8"));
+                }
+            }
+
         }
 
-        for (int i = 0;i< message.getPayload().getParts().size();i++) {
 
-            if(message.getPayload().getParts().get(i).getMimeType().equalsIgnoreCase("text/plain")){
-
-                byte[] decodedBytes = Base64.decodeBase64(message.getPayload().getParts().get(i)
-                    .getBody().getData().replace('-', '+').replace('_', '/').getBytes(StandardCharsets.UTF_8));
-
-                result.setBody(new String(decodedBytes, "UTF-8"));
-            }
-            if(message.getPayload().getParts().get(i).getMimeType().equalsIgnoreCase("text/html")) {
-                byte[] decodedBytes = Base64.decodeBase64(message.getPayload().getParts().get(i)
-                        .getBody().getData().replace('-', '+').replace('_', '/').getBytes(StandardCharsets.UTF_8));
-
-                result.setHtmlBody(new String(decodedBytes, "UTF-8"));
-            }
-        }
         return result;
     }
 }

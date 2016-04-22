@@ -26,7 +26,6 @@ public class MessageModel {
         this.snippet = snippet;
         this.body = body;
         this.htmlBody = htmlBody;
-        bodyView = false;
     }
 
 

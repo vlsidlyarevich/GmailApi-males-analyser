@@ -9,7 +9,8 @@
     <http auto-config="true" use-expressions="false">
         <intercept-url pattern="/pages/mails.xhtml" access="ROLE_USER"/>
         <form-login login-page="/pages/login.xhtml"
-                    default-target-url="/pages/login.xhtml"/>
+                    default-target-url="/pages/login.xhtml"
+                    authentication-failure-url="/pages/login.xhtml?error=true"/>
         <logout logout-success-url="/pages/login.xhtml" />
     </http>
 

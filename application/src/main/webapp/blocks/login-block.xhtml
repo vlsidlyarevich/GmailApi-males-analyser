@@ -3,7 +3,8 @@
         xmlns:h="http://java.sun.com/jsf/html"
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:f="http://java.sun.com/jsf/core"
-        xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+        xmlns:a="http://xmlns.jcp.org/jsf/passthrough" xmlns:c="http://java.sun.com/jsp/jstl/core"
+        xmlns:spring="http://www.springframework.org/tags">
 
     <h:panelGroup layout="block" styleClass="login-block-div">
 
@@ -28,6 +29,9 @@
                 <input type="submit" value="Login" style="width:80%;" class="btn btn-lg btn-success"/>
                 <h:link styleClass="google-button btn" outcome="mails" rendered="#{request.isUserInRole('ROLE_USER')}">
                     <span class=""></span>Sign in with Google</h:link>
+                <c:if test="${param.error == 'true'}">
+                    <span style="color:red;font-size: medium">wrong username or password</span>
+                </c:if>
             </h:panelGrid>
         </h:panelGroup>
     </h:panelGroup>

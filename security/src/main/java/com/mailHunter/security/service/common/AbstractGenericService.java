@@ -26,7 +26,7 @@ public abstract class AbstractGenericService<T extends Persistable<ID>, ID exten
     protected final String simpleTypeName = ((Class<T>) ((ParameterizedType) getClass().getGenericSuperclass())
             .getActualTypeArguments()[0]).getSimpleName();
 
-    @Autowired
+    @Autowired(required = true)
     protected REPO repository;
 
     public long count() {

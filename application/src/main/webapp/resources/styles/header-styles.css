@@ -18,7 +18,13 @@
     height: 80px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
-
+.links-div{
+    width: 98%;
+}
+.links-column{
+    width: 85%;
+    text-align: right;
+}
 .nav-link{
     color:white;
     padding: 10px;
