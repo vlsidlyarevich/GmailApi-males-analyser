@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:bean="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security.xsd">
+
+
+    <bean:http auto-config="true" use-expressions="false">
+        <bean:intercept-url pattern="/pages/mails.xhtml" access="ROLE_USER"/>
+        <bean:form-login login-page="/pages/login.xhtml"
+                    default-target-url="/pages/login.xhtml"
+                    authentication-failure-url="/pages/login.xhtml?error=true"/>
+        <bean:logout logout-success-url="/pages/login.xhtml" />
+    </bean:http>
+
+
+    <bean:authentication-manager>
+        <bean:authentication-provider>
+            <bean:jdbc-user-service data-source-ref="dataSource"
+                               authorities-by-username-query=
+                                       "select username,role from users where username =?  "
+                               users-by-username-query=
+                                       "select username,password,enabled  from users where username=?"/>
+        </bean:authentication-provider>
+    </bean:authentication-manager>
+
+    <import resource="classpath:spring-services-context.xml"/>
+    <context:component-scan base-package="com.mail.hunter.application"/>
+
+</beans>

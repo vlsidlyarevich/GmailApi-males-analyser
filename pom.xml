@@ -4,14 +4,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+
     <groupId>com.mail.hunter</groupId>
     <artifactId>MailHunter</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <module>dataAccess</module>
+        <module>services</module>
+        <module>application</module>
+        <module>gmail</module>
+    </modules>
+    <!--<modules>
         <module>security</module>
         <module>gmail</module>
         <module>application</module>
-    </modules>
+    </modules>-->
     <packaging>pom</packaging>
     <name>Mail-Hunter</name>
 
