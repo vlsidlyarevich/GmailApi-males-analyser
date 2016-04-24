@@ -26,7 +26,8 @@
 
         <h:panelGroup layout="block" styleClass="button-div form-group">
             <h:panelGrid columns="1" styleClass="table  button-grid" style="text-align: center;">
-                <input type="submit" value="Login" style="width:80%;" class="btn btn-lg btn-success"/>
+                <h:commandButton type="submit" value="Login" style="width: 80%;" styleClass="btn btn-lg btn-success" action="#{loginBean.login}"/>
+               <!-- <input type="submit" value="Login" style="width:80%;" class="btn btn-lg btn-success"/>-->
                 <h:link styleClass="google-button btn" outcome="mails" rendered="#{request.isUserInRole('ROLE_USER')}">
                     <span class=""></span>Sign in with Google</h:link>
                 <c:if test="${param.error == 'true'}">

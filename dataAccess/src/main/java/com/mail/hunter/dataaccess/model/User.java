@@ -7,7 +7,12 @@ import org.springframework.data.domain.Persistable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(
+        name = "users",
+        uniqueConstraints = {
+                @UniqueConstraint(name = "uc_user_username", columnNames = {"username"})
+        }
+)
 public class User implements Persistable<Integer> {
     private static final long serialVersionUID = 1L;
 
@@ -16,7 +21,8 @@ public class User implements Persistable<Integer> {
     @Column(name="id",unique = true,nullable = false)
     private Integer id;
 
-    @Column(name = "username",length = 45,nullable = false)
+
+    @Column(name = "username",length = 45,nullable = false,unique = true)
     private String username;
     @Column(name ="password", length = 45,nullable = false)
     private String password;
