@@ -30,7 +30,7 @@
 }
 .input-div{
     text-align: center;
-    height: 32%;
+    height: 40%;
 }
 .input-panel-grid{
     width: 80%;
@@ -48,6 +48,7 @@
 }
 .google-button{
     margin-top: 2%;
+    width: 60%;
     color: #fff;
     background-color: #d9534f;
     border-color: #d43f3a;
