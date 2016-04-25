@@ -22,17 +22,17 @@
                 <h:inputSecret a:placeholder="Password" id="j_password" styleClass="form-control login-input"
                                required="true"/>
             </h:panelGrid>
+            <c:if test="${param.error == 'true'}">
+                <span style="color:red;font-size: medium">wrong username or password</span>
+            </c:if>
         </h:panelGroup>
 
         <h:panelGroup layout="block" styleClass="button-div form-group">
-            <h:panelGrid columns="1" styleClass="table  button-grid" style="text-align: center;">
-                <h:commandButton type="submit" value="Login" style="width: 80%;" styleClass="btn btn-lg btn-success" action="#{loginBean.login}"/>
-               <!-- <input type="submit" value="Login" style="width:80%;" class="btn btn-lg btn-success"/>-->
+            <h:panelGrid columns="1" styleClass="table  button-grid" style="text-align: center;vertical-align: middle">
+                <h:commandButton type="submit" value="Login" style="width: 80%;" styleClass="btn btn-lg btn-success" action="#{loginBean.login}"
+                                 rendered="#{!request.isUserInRole('ROLE_USER')}"/>
                 <h:link styleClass="google-button btn" outcome="mails" rendered="#{request.isUserInRole('ROLE_USER')}">
                     <span class=""></span>Sign in with Google</h:link>
-                <c:if test="${param.error == 'true'}">
-                    <span style="color:red;font-size: medium">wrong username or password</span>
-                </c:if>
             </h:panelGrid>
         </h:panelGroup>
     </h:panelGroup>

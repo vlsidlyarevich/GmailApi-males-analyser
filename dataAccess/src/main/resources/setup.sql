@@ -1,1 +1,8 @@
-CREATE TABLE users ()
+CREATE TABLE users.users
+(
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  username VARCHAR(45) NOT NULL,
+  password VARCHAR(45) NOT NULL,
+  role VARCHAR(45) NOT NULL,
+  enabled BOOLEAN DEFAULT true
+)

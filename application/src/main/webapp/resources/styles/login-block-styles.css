@@ -1,11 +1,13 @@
 .login-block-div{
-    margin-left: 15%;
-    margin-top: 15%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
     background-color: rgba(247, 244, 244, 0.75);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    height: 350px;
-    width: 350px;
-    float:left;
+    height: 330px;
+    width: 400px;
 }
 
 .login-block-header{
@@ -33,13 +35,12 @@
 .input-panel-grid{
     width: 80%;
 }
-
 .login-input{
     width:80%;
     margin: 0 auto;
 }
 .button-div{
-
+    height: 32%;
 }
 .button-grid{
     width: 100%;
@@ -60,4 +61,10 @@
     color: #fff;
     background-color: #c9302c;
     border-color: #ac2925;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    border-top: none;
 }
