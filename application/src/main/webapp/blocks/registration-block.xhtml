@@ -3,7 +3,8 @@
         xmlns:h="http://java.sun.com/jsf/html"
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:f="http://java.sun.com/jsf/core"
-        xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+        xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:p="http://primefaces.org/ui">
 
     <h:panelGroup layout="block" styleClass="reg-block-div">
 
@@ -14,28 +15,42 @@
             </h:panelGroup>
         </h:panelGroup>
 
-        <h:panelGroup layout="block" styleClass="reg-input-div form-group">
+
+        <h:panelGroup layout="block" id="inputForm" styleClass="reg-input-div form-group">
             <h:panelGrid columns="1" style="width: 100%;height: 100%;">
                 <h:inputText a:placeholder="Username" id="userNameInput" required="true" value="#{userBean.userName}"
-                               styleClass="form-control login-input"
-                        />
-                <h:message for="userNameInput" style="color: red"/>
-                
-                <h:inputSecret a:placeholder="Password" id="userPasswordInput" required="true" value="#{userBean.password}"
-                               styleClass="form-control login-input"
-                        />
-                <h:message for="userPasswordInput" style="color: red"/>
-                <h:inputSecret a:placeholder="Repeat password" styleClass="form-control login-input"
-                        />
-
+                             styleClass="form-control login-input" requiredMessage="Please enter username"
+                />
+                <h:inputSecret a:placeholder="Password" id="userPasswordInput" required="true"
+                               value="#{userBean.password}"
+                               styleClass="form-control login-input" requiredMessage="Please input password"
+                >
+                    <f:validator validatorId="passwordValidator"/>
+                    <f:attribute name="confirmPassword" value="#{confirmPassword}"/>
+                </h:inputSecret>
+                <h:inputSecret a:placeholder="Repeat password" id="userPasswordRepeat"
+                               styleClass="form-control login-input" required="true"
+                               requiredMessage="Please repeat password" binding="#{confirmPassword}"
+                />
             </h:panelGrid>
         </h:panelGroup>
 
-        <h:panelGroup layout="block" styleClass="button-div form-group">
+        <h:message for="userNameInput" style="color: red;"/>
+        <br/>
+        <h:message for="userPasswordInput" style="color: red;"/>
+        <br/>
+        <h:message for="userPasswordRepeat" style="color: red;"/>
+
+        <h:panelGroup layout="block" styleClass="register-button-div form-group">
             <h:panelGrid columns="1" styleClass="table  button-grid" style="text-align: center;">
-                <h:commandButton value="Register" action="#{userBean.addUser()}" style="width:80%;" class="btn btn-lg btn-success">
+                <h:commandButton value="Register" action="#{userBean.addUser()}" style="width:80%;"
+                                 styleClass="btn btn-lg btn-success">
                 </h:commandButton>
             </h:panelGrid>
         </h:panelGroup>
+
+
+
     </h:panelGroup>
+
 </f:view>

@@ -1,6 +1,7 @@
 package com.mail.hunter.application.beans;
 
 
+import com.mail.hunter.application.authorization.impl.AuthorizationBeanImpl;
 import com.mail.hunter.gmail.models.MessageModel;
 import org.apache.commons.codec.DecoderException;
 
@@ -32,14 +33,14 @@ public class MessagesBean implements Serializable {
 
 
         try {
-            AuthorizationBean.authorize();
+            AuthorizationBeanImpl.authorize();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (DecoderException e) {
             e.printStackTrace();
         }
 
-        messageModels = AuthorizationBean.getMessages();
+        messageModels = AuthorizationBeanImpl.getMessages();
     }
 
     public List<MessageModel> getSublist() {

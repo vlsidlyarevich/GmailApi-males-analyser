@@ -1,4 +1,4 @@
-package com.mail.hunter.application.beans;
+package com.mail.hunter.application.authorization.impl;
 
 
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
@@ -22,7 +22,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @ManagedBean
-public class AuthorizationBean {
+public class AuthorizationBeanImpl {
 
     private static final String APPLICATION_NAME =
             "Mail Hunter";
@@ -85,7 +85,6 @@ public class AuthorizationBean {
 
         return models;
     }
-
 
 
 }

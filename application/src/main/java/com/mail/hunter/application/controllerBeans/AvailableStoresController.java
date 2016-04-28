@@ -1,7 +1,7 @@
 package com.mail.hunter.application.controllerBeans;
 
 
-import com.mail.hunter.application.beans.AuthorizationBean;
+import com.mail.hunter.application.authorization.impl.AuthorizationBeanImpl;
 import com.mail.hunter.gmail.models.MessageModel;
 
 import javax.annotation.PostConstruct;
@@ -9,6 +9,7 @@ import javax.faces.bean.ManagedBean;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+
 
 @ManagedBean
 public class AvailableStoresController {
@@ -21,7 +22,6 @@ public class AvailableStoresController {
     private List<MessageModel> aliExpressMessages;
     private List<MessageModel> originMessages;
     private List<MessageModel> ozByMessages;
-
 
 
     public AvailableStoresController(){
@@ -48,14 +48,22 @@ public class AvailableStoresController {
     }
     public void checkCustomers() throws UnsupportedEncodingException {
 
-        List<MessageModel> messages = AuthorizationBean.getMessages();
+        List<MessageModel> messages = AuthorizationBeanImpl.getMessages();
 
         for(MessageModel message :messages) {
 
-            if(message.getHtmlBody().contains("noreply@steampowered.com"));
-
-            /*
-            Document doc = Jsoup.parse(message.getPayload().getParts());*/
+            if(message.getHtmlBody().contains("noreply@steampowered.com")){
+                steamCheck = true;
+                steamMessages.add(message);
+            }
+            if(message.getHtmlBody().contains("noreply@ea.com")){
+                originCheck = true;
+                originMessages.add(message);
+            }
+            if(message.getHtmlBody().contains("oz@oz.by")){
+                ozByCheck = true;
+                ozByMessages.add(message);
+            }
         }
     }
 
