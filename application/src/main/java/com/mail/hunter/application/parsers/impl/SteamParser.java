@@ -7,7 +7,6 @@ import com.mail.hunter.application.parsers.Parser;
 import com.mail.hunter.gmail.models.MessageModel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.util.ArrayList;
@@ -20,24 +19,20 @@ public class SteamParser implements Parser {
 
         Document doc = Jsoup.parse(messageModel.getHtmlBody());
 
-        Elements outerTable = doc.select("table");
+        Elements table = doc.select("table");
 
-        Elements productAndCostStrongs = outerTable.get(6).select("strong");
-        Elements dateStrongs = outerTable.get(3).select("strong");
+        Elements rows = table.select("tr");
 
-        Element product = productAndCostStrongs.get(0);
-        Element cost = productAndCostStrongs.get(1);
-        Element date = dateStrongs.get(2);
+        String productName = rows.get(0).select("div").text();
+        String productCost = rows.get(2).select("td").get(1).text();
+        String date = rows.get(10).select("td").get(1).text();
 
-        String productName = product.select("span").first().text();
-        String costValue = cost.select("span").first().text();
-        String dateValue = date.text();
 
         ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item(costValue,productName));
+        items.add(new Item(productCost,productName));
 
 
-        return new OnlinePurchase(dateValue,items);
+        return new OnlinePurchase(date,items);
     }
 
 

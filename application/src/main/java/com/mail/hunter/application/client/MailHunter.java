@@ -56,7 +56,7 @@ public class MailHunter {
         OriginParser parser = new OriginParser();
         SteamParser parser1 = new SteamParser();
 
-        parser.parseMessage(messageModels.get(5));
+        parser1.parseMessage(messageModels.get(5));
     }
 
 
