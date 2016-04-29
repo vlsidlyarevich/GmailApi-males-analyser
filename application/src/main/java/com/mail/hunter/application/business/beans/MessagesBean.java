@@ -1,7 +1,7 @@
-package com.mail.hunter.application.beans;
+package com.mail.hunter.application.business.beans;
 
 
-import com.mail.hunter.application.authorization.impl.AuthorizationBeanImpl;
+import com.mail.hunter.application.security.authorization.impl.AuthorizationBeanImpl;
 import com.mail.hunter.gmail.models.MessageModel;
 import org.apache.commons.codec.DecoderException;
 

@@ -1,4 +1,4 @@
-package com.mail.hunter.application.beans;
+package com.mail.hunter.application.business.beans;
 
 import com.mail.hunter.dataaccess.model.User;
 import com.mail.hunter.services.UserService;

@@ -1,4 +1,4 @@
-package com.mail.hunter.application.security;
+package com.mail.hunter.application.security.login;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;

@@ -1,4 +1,4 @@
-package com.mail.hunter.application.components;
+package com.mail.hunter.application.view.components;
 
 import javax.el.ELContext;
 import javax.el.ValueExpression;

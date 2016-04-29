@@ -1,4 +1,4 @@
-package com.mail.hunter.application.validators;
+package com.mail.hunter.application.view.validators;
 
 
 import javax.faces.application.FacesMessage;

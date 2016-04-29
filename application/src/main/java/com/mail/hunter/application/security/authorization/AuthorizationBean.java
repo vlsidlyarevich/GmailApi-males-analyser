@@ -1,4 +1,4 @@
-package com.mail.hunter.application.authorization;
+package com.mail.hunter.application.security.authorization;
 
 import com.mail.hunter.gmail.models.MessageModel;
 import org.apache.commons.codec.DecoderException;

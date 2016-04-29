@@ -19,6 +19,11 @@ import java.util.List;
 
 public final class AuthorizeUtils {
 
+
+    private AuthorizeUtils(){
+    }
+
+
     /**
      * Creates an authorized Credential object.
      * @return an authorized Credential object.

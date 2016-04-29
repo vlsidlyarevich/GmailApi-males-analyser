@@ -1,8 +1,8 @@
-package com.mail.hunter.application.controllerBeans;
+package com.mail.hunter.application.business.controllerBeans;
 
-import com.mail.hunter.application.authorization.impl.AuthorizationBeanImpl;
-import com.mail.hunter.application.models.OnlinePurchase;
-import com.mail.hunter.application.parsers.Parser;
+import com.mail.hunter.application.security.authorization.impl.AuthorizationBeanImpl;
+import com.mail.hunter.application.business.models.OnlinePurchase;
+import com.mail.hunter.application.business.parsers.Parser;
 import com.mail.hunter.gmail.models.MessageModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -71,14 +71,19 @@ public class ItemsController {
 
             if(steamCheck && message.getHtmlBody().contains("noreply@steampowered.com")){
                 steamMessages.add(message);
+                onlinePurchases.add(steamParser.parseMessage(message));
             }
             if(originCheck && message.getHtmlBody().contains("noreply@ea.com")){
                 originMessages.add(message);
+                onlinePurchases.add(originParser.parseMessage(message));
             }
             if(ozByCheck && message.getHtmlBody().contains("oz@oz.by")){
                 ozByMessages.add(message);
+                onlinePurchases.add(ozByParser.parseMessage(message));
             }
         }
+
+
     }
 
 

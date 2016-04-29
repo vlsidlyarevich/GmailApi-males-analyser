@@ -1,9 +1,9 @@
-package com.mail.hunter.application.parsers.impl;
+package com.mail.hunter.application.business.parsers.impl;
 
 
-import com.mail.hunter.application.models.Item;
-import com.mail.hunter.application.models.OnlinePurchase;
-import com.mail.hunter.application.parsers.Parser;
+import com.mail.hunter.application.business.models.Item;
+import com.mail.hunter.application.business.models.OnlinePurchase;
+import com.mail.hunter.application.business.parsers.Parser;
 import com.mail.hunter.gmail.models.MessageModel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

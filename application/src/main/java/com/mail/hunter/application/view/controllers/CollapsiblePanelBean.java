@@ -1,4 +1,4 @@
-package com.mail.hunter.application.controllers;
+package com.mail.hunter.application.view.controllers;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;

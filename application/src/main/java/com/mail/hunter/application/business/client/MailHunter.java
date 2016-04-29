@@ -1,4 +1,4 @@
-package com.mail.hunter.application.client;
+package com.mail.hunter.application.business.client;
 
 
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
@@ -10,9 +10,9 @@ import com.google.api.services.gmail.Gmail;
 import com.google.api.services.gmail.GmailScopes;
 import com.google.api.services.gmail.model.ListMessagesResponse;
 import com.google.api.services.gmail.model.Message;
-import com.mail.hunter.application.parsers.impl.OriginParser;
-import com.mail.hunter.application.parsers.impl.OzByParser;
-import com.mail.hunter.application.parsers.impl.SteamParser;
+import com.mail.hunter.application.business.parsers.impl.OriginParser;
+import com.mail.hunter.application.business.parsers.impl.OzByParser;
+import com.mail.hunter.application.business.parsers.impl.SteamParser;
 import com.mail.hunter.gmail.models.MessageModel;
 import com.mail.hunter.gmail.service.gmail.GmailServices;
 import com.mail.hunter.gmail.service.utils.MessageUtils;

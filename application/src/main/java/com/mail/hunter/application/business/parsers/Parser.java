@@ -1,7 +1,7 @@
-package com.mail.hunter.application.parsers;
+package com.mail.hunter.application.business.parsers;
 
 
-import com.mail.hunter.application.models.OnlinePurchase;
+import com.mail.hunter.application.business.models.OnlinePurchase;
 import com.mail.hunter.gmail.models.MessageModel;
 
 public interface Parser {

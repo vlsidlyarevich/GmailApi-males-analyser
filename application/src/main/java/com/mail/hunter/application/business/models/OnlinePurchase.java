@@ -1,4 +1,4 @@
-package com.mail.hunter.application.models;
+package com.mail.hunter.application.business.models;
 
 
 import java.util.List;

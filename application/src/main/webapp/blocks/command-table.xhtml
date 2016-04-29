@@ -26,7 +26,7 @@
 
         <h:panelGroup layout="block" styleClass="buttons-div">
             <h:panelGrid columns="1" styleClass="buttons-panel-grid">
-                <h:commandButton value="Analyse" action="#{itemsController.checkCustomers}" styleClass="btn btn-lg btn-success">
+                <h:commandButton value="Analyse" action="#{itemsController.checkCustomers()}" styleClass="btn btn-lg btn-success">
                     <f:ajax execute="@form" render="@form"/>
                 </h:commandButton>
             </h:panelGrid>

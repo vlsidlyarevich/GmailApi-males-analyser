@@ -1,4 +1,4 @@
-package com.mail.hunter.application.authorization.impl;
+package com.mail.hunter.application.security.authorization.impl;
 
 
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;

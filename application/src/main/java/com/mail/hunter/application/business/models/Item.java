@@ -1,4 +1,4 @@
-package com.mail.hunter.application.models;
+package com.mail.hunter.application.business.models;
 
 public class Item {
 
