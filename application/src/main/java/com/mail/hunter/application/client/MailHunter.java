@@ -11,6 +11,7 @@ import com.google.api.services.gmail.GmailScopes;
 import com.google.api.services.gmail.model.ListMessagesResponse;
 import com.google.api.services.gmail.model.Message;
 import com.mail.hunter.application.parsers.impl.OriginParser;
+import com.mail.hunter.application.parsers.impl.OzByParser;
 import com.mail.hunter.application.parsers.impl.SteamParser;
 import com.mail.hunter.gmail.models.MessageModel;
 import com.mail.hunter.gmail.service.gmail.GmailServices;
@@ -55,8 +56,9 @@ public class MailHunter {
 
         OriginParser parser = new OriginParser();
         SteamParser parser1 = new SteamParser();
+        OzByParser parser2 = new OzByParser();
 
-        parser1.parseMessage(messageModels.get(5));
+        parser2.parseMessage(messageModels.get(1));
     }
 
 
