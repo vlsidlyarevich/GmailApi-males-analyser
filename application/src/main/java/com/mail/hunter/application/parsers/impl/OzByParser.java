@@ -8,9 +8,11 @@ import com.mail.hunter.gmail.models.MessageModel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+@Component("ozByParser")
 public class OzByParser implements Parser {
 
     public OnlinePurchase parseMessage(MessageModel messageModel) {
@@ -30,8 +32,14 @@ public class OzByParser implements Parser {
             items.add(new Item("unknown",name,amount));
         }
 
-        System.out.println();
-        return null;
+        Element valueRows = outerTable.select("tr").get(26);
+        Element innerValueRow = valueRows.select("tr").get(1);
+
+        String costValue = innerValueRow.select("td").get(1).text();
+        String dateValue = doc.text().substring(doc.text().indexOf("Дата:")+5,
+                doc.text().indexOf("Тема")).trim();
+
+        return new OnlinePurchase(dateValue,items,costValue);
     }
 
 

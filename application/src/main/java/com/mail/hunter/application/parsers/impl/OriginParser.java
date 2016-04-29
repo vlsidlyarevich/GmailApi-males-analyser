@@ -9,9 +9,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+@Component("originParser")
 public class OriginParser implements Parser {
 
 
@@ -37,7 +39,7 @@ public class OriginParser implements Parser {
         items.add(new Item(costValue,productName));
 
 
-        return new OnlinePurchase(dateValue,items);
+        return new OnlinePurchase(dateValue,items,costValue);
     }
 
 

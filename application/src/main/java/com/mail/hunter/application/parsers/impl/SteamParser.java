@@ -8,9 +8,11 @@ import com.mail.hunter.gmail.models.MessageModel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+@Component("steamParser")
 public class SteamParser implements Parser {
 
 
@@ -24,15 +26,15 @@ public class SteamParser implements Parser {
         Elements rows = table.select("tr");
 
         String productName = rows.get(0).select("div").text();
-        String productCost = rows.get(2).select("td").get(1).text();
-        String date = rows.get(10).select("td").get(1).text();
+        String costValue = rows.get(2).select("td").get(1).text();
+        String dateValue = rows.get(10).select("td").get(1).text();
 
 
         ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item(productCost,productName));
+        items.add(new Item(costValue,productName));
 
 
-        return new OnlinePurchase(date,items);
+        return new OnlinePurchase(dateValue,items,costValue);
     }
 
 
