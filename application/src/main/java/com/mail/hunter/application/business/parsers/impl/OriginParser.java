@@ -9,39 +9,41 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-@Component("originParser")
 public class OriginParser implements Parser {
 
 
-    public OnlinePurchase parseMessage(MessageModel messageModel){
+    public OnlinePurchase parseMessage(MessageModel messageModel) {
+
+        try {
+
+            Document doc = Jsoup.parse(messageModel.getHtmlBody());
+
+            Elements outerTable = doc.select("table");
+
+            Elements productAndCostStrongs = outerTable.get(6).select("strong");
+            Elements dateStrongs = outerTable.get(3).select("strong");
+
+            Element product = productAndCostStrongs.get(0);
+            Element cost = productAndCostStrongs.get(1);
+            Element date = dateStrongs.get(2);
+
+            String productName = product.select("span").first().text();
+            String costValue = cost.select("span").first().text();
+            String dateValue = date.text();
+
+            ArrayList<Item> items = new ArrayList<>();
+            items.add(new Item(costValue, productName));
 
 
-        Document doc = Jsoup.parse(messageModel.getHtmlBody());
-
-        Elements outerTable = doc.select("table");
-
-        Elements productAndCostStrongs = outerTable.get(6).select("strong");
-        Elements dateStrongs = outerTable.get(3).select("strong");
-
-        Element product = productAndCostStrongs.get(0);
-        Element cost = productAndCostStrongs.get(1);
-        Element date = dateStrongs.get(2);
-
-        String productName = product.select("span").first().text();
-        String costValue = cost.select("span").first().text();
-        String dateValue = date.text();
-
-        ArrayList<Item> items = new ArrayList<>();
-        items.add(new Item(costValue,productName));
-
-
-        return new OnlinePurchase(dateValue,items,costValue);
+            return new OnlinePurchase(dateValue, items, costValue,"www.origin.com");
+        }catch (Exception e){
+            System.out.println(e.toString());
+        }
+        return null;
     }
-
 
 
 }

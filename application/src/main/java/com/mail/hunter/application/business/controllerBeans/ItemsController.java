@@ -1,15 +1,16 @@
 package com.mail.hunter.application.business.controllerBeans;
 
-import com.mail.hunter.application.security.authorization.impl.AuthorizationBeanImpl;
 import com.mail.hunter.application.business.models.OnlinePurchase;
 import com.mail.hunter.application.business.parsers.Parser;
+import com.mail.hunter.application.business.parsers.impl.OriginParser;
+import com.mail.hunter.application.business.parsers.impl.OzByParser;
+import com.mail.hunter.application.business.parsers.impl.SteamParser;
+import com.mail.hunter.application.security.authorization.impl.AuthorizationBeanImpl;
 import com.mail.hunter.gmail.models.MessageModel;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,69 +18,80 @@ import java.util.List;
 /**
  * Created by vlad on 29.04.16.
  */
-@RequestScoped
+@SessionScoped
 @ManagedBean(name = "itemsController")
 public class ItemsController {
 
-    @Autowired
-    @Qualifier(value = "originParser")
     private Parser originParser;
-
-    @Autowired
-    @Qualifier(value = "ozByParser")
     private Parser ozByParser;
-
-    @Autowired
-    @Qualifier(value = "steamParser")
     private Parser steamParser;
-
 
 
     private boolean steamCheck;
     private boolean originCheck;
     private boolean ozByCheck;
-    private List<MessageModel> steamMessages;
-    private List<MessageModel> originMessages;
-    private List<MessageModel> ozByMessages;
+    private List<OnlinePurchase> steamMessages;
+    private List<OnlinePurchase> originMessages;
+    private List<OnlinePurchase> ozByMessages;
 
     private ArrayList<OnlinePurchase> onlinePurchases;
 
-    public ItemsController(){
+    public ItemsController() {
         steamCheck = false;
         originCheck = false;
         ozByCheck = false;
         steamMessages = new ArrayList<>();
         originMessages = new ArrayList<>();
         ozByMessages = new ArrayList<>();
+        onlinePurchases = new ArrayList<>();
+
+        originParser = new OriginParser();
+        steamParser = new SteamParser();
+        ozByParser = new OzByParser();
     }
 
+
     @PostConstruct
-    public void init(){
+    public void init() {
         steamCheck = false;
         originCheck = false;
         ozByCheck = false;
         steamMessages = new ArrayList<>();
         originMessages = new ArrayList<>();
         ozByMessages = new ArrayList<>();
+        onlinePurchases = new ArrayList<>();
+
+        originParser = new OriginParser();
+        steamParser = new SteamParser();
+        ozByParser = new OzByParser();
     }
 
     public void checkCustomers() throws UnsupportedEncodingException {
 
         List<MessageModel> messages = AuthorizationBeanImpl.getMessages();
 
-        for(MessageModel message :messages) {
+        for (MessageModel message : messages) {
 
-            if(steamCheck && message.getHtmlBody().contains("noreply@steampowered.com")){
-                steamMessages.add(message);
-                onlinePurchases.add(steamParser.parseMessage(message));
+            if (steamCheck && message.getHtmlBody() != null && message.getHtmlBody().contains("noreply@steampowered.com")) {
+                OnlinePurchase onlinePurchase = steamParser.parseMessage(message);
+                if (onlinePurchase != null) {
+                    onlinePurchases.add(onlinePurchase);
+                    steamMessages.add(onlinePurchase);
+                }
             }
-            if(originCheck && message.getHtmlBody().contains("noreply@ea.com")){
-                originMessages.add(message);
-                onlinePurchases.add(originParser.parseMessage(message));
+            if (originCheck && message.getHtmlBody() != null && message.getHtmlBody().contains("noreply@ea.com")) {
+                OnlinePurchase onlinePurchase = originParser.parseMessage(message);
+                if (onlinePurchase != null) {
+                    onlinePurchases.add(onlinePurchase);
+                    originMessages.add(onlinePurchase);
+                }
             }
-            if(ozByCheck && message.getHtmlBody().contains("oz@oz.by")){
-                ozByMessages.add(message);
-                onlinePurchases.add(ozByParser.parseMessage(message));
+            if (ozByCheck && message.getHtmlBody() != null && message.getHtmlBody().contains("oz@oz.by")) {
+                OnlinePurchase onlinePurchase = ozByParser.parseMessage(message);
+                if (onlinePurchase != null) {
+                    onlinePurchases.add(onlinePurchase);
+                    ozByMessages.add(onlinePurchase);
+                }
             }
         }
 
@@ -111,15 +123,15 @@ public class ItemsController {
         this.steamCheck = steamCheck;
     }
 
-    public List<MessageModel> getSteamMessages() {
+    public List<OnlinePurchase> getSteamMessages() {
         return steamMessages;
     }
 
-    public List<MessageModel> getOriginMessages() {
+    public List<OnlinePurchase> getOriginMessages() {
         return originMessages;
     }
 
-    public List<MessageModel> getOzByMessages() {
+    public List<OnlinePurchase> getOzByMessages() {
         return ozByMessages;
     }
 

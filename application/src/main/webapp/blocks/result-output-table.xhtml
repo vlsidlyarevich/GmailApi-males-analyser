@@ -1,0 +1,36 @@
+<f:view
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+
+
+    <h:panelGroup layout="block" styleClass="result-output-table">
+        <h:form>
+            <p:dataTable var="item" value="#{itemsController.onlinePurchases}">
+                <p:column headerText="data">
+                    <h:outputText value="#{item.date}"/>
+                </p:column>
+                <p:column headerText="price">
+                    <h:outputText value="#{item.summary}"/>
+                </p:column>
+            </p:dataTable>
+
+            <p:treeTable value="#{itemsController.onlinePurchases}" var="item">
+                <f:facet name="header">
+                    Purchases viewer
+                </f:facet>
+                <p:column headerText="Customer">
+                    <h:outputText value="#{item.customer}" />
+                </p:column>
+                <p:column headerText="Date">
+                    <h:outputText value="#{item.date}" />
+                </p:column>
+                <p:column headerText="Total">
+                    <h:outputText value="#{item.summary}}" />
+                </p:column>
+            </p:treeTable>
+        </h:form>
+    </h:panelGroup>
+</f:view>

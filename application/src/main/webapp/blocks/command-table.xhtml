@@ -7,31 +7,33 @@
 
     <h:panelGroup layout="block" styleClass="command-table ">
 
-        <h:panelGroup layout="block" styleClass="checkbox-div">
-            <h:panelGrid styleClass="search-panel-grid" cellpadding="5" columns="2">
+        <h:form>
+            <h:panelGroup layout="block" styleClass="checkbox-div">
+                <h:panelGrid styleClass="search-panel-grid" cellpadding="5" columns="2">
 
 
-                <h:selectBooleanCheckbox value="#{itemsController.steamCheck}"/>
-                <h:outputText value="Steam"/>
+                    <h:selectBooleanCheckbox value="#{itemsController.steamCheck}"/>
+                    <h:outputText value="Steam"/>
 
-                <h:selectBooleanCheckbox value="#{itemsController.ozByCheck}"/>
-                <h:outputText value="Oz.by"/>
+                    <h:selectBooleanCheckbox value="#{itemsController.ozByCheck}"/>
+                    <h:outputText value="Oz.by"/>
 
-                <h:selectBooleanCheckbox value="#{itemsController.originCheck}"/>
-                <h:outputText value="Origin"/>
+                    <h:selectBooleanCheckbox value="#{itemsController.originCheck}"/>
+                    <h:outputText value="Origin"/>
 
-            </h:panelGrid>
-        </h:panelGroup>
+                </h:panelGrid>
+            </h:panelGroup>
 
 
-        <h:panelGroup layout="block" styleClass="buttons-div">
-            <h:panelGrid columns="1" styleClass="buttons-panel-grid">
-                <h:commandButton value="Analyse" action="#{itemsController.checkCustomers()}" styleClass="btn btn-lg btn-success">
-                    <f:ajax execute="@form" render="@form"/>
-                </h:commandButton>
-            </h:panelGrid>
-        </h:panelGroup>
-
+            <h:panelGroup layout="block" styleClass="buttons-div">
+                <h:panelGrid columns="1" styleClass="buttons-panel-grid">
+                    <h:commandButton value="Analyse" action="#{itemsController.checkCustomers()}"
+                                     styleClass="btn btn-lg btn-success">
+                        <f:ajax execute="@form"/>
+                    </h:commandButton>
+                </h:panelGrid>
+            </h:panelGroup>
+        </h:form>
 
     </h:panelGroup>
 
