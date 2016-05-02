@@ -27,7 +27,7 @@ public class OzByParser implements Parser {
             for (int i = 1; i < productRows.select("tr").get(5).select("tr").size(); i++) {
                 String name = productRows.select("tr").get(5).select("tr").get(i).select("td").get(0).text();
                 String amount = productRows.select("tr").get(5).select("tr").get(i).select("td").get(1).text();
-                items.add(new Item("unknown", name, amount));
+                items.add(new Item("-", name, amount));
             }
 
             Element valueRows = outerTable.select("tr").get(26);
