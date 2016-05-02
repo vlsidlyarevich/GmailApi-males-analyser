@@ -6,7 +6,9 @@ import com.mail.hunter.application.business.parsers.impl.OriginParser;
 import com.mail.hunter.application.business.parsers.impl.OzByParser;
 import com.mail.hunter.application.business.parsers.impl.SteamParser;
 import com.mail.hunter.application.security.authorization.impl.AuthorizationBeanImpl;
+import com.mail.hunter.application.view.services.TreeTableService;
 import com.mail.hunter.gmail.models.MessageModel;
+import org.primefaces.model.TreeNode;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -25,6 +27,10 @@ public class ItemsController {
     private Parser originParser;
     private Parser ozByParser;
     private Parser steamParser;
+
+    private TreeNode root;
+
+    private TreeTableService service;
 
 
     private boolean steamCheck;
@@ -48,6 +54,8 @@ public class ItemsController {
         originParser = new OriginParser();
         steamParser = new SteamParser();
         ozByParser = new OzByParser();
+
+        service = new TreeTableService();
     }
 
 
@@ -64,6 +72,8 @@ public class ItemsController {
         originParser = new OriginParser();
         steamParser = new SteamParser();
         ozByParser = new OzByParser();
+
+        service = new TreeTableService();
     }
 
     public void checkCustomers() throws UnsupportedEncodingException {
@@ -95,9 +105,13 @@ public class ItemsController {
             }
         }
 
-
+        if(onlinePurchases.size() != 0)
+            root = service.createNode(onlinePurchases);
     }
 
+    public TreeNode getRoot() {
+        return root;
+    }
 
     public boolean isOzByCheck() {
         return ozByCheck;

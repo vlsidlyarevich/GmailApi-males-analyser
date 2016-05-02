@@ -6,7 +6,6 @@ import com.mail.hunter.application.view.models.PurchaseModel;
 import org.primefaces.model.DefaultTreeNode;
 import org.primefaces.model.TreeNode;
 
-import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.util.ArrayList;
 
@@ -15,22 +14,21 @@ import java.util.ArrayList;
  */
 
 @RequestScoped
-@ManagedBean(name = "treeTableService")
 public class TreeTableService {
 
-    public TreeNode createNode(ArrayList<OnlinePurchase> onlinePurchases){
+    public  TreeNode createNode(ArrayList<OnlinePurchase> onlinePurchases){
 
-        TreeNode root = new DefaultTreeNode(new PurchaseModel("","","",""));
+        TreeNode root = new DefaultTreeNode(new PurchaseModel("","","","",""));
 
         for(OnlinePurchase onlinePurchase : onlinePurchases){
             TreeNode node = new DefaultTreeNode(new PurchaseModel(
                     onlinePurchase.getCustomer(),onlinePurchase.getDate(),
-                    onlinePurchase.getSummary(),""),root);
+                    onlinePurchase.getSummary(),"",""),root);
 
             for(Item item : onlinePurchase.getItems()){
                 TreeNode childNode = new DefaultTreeNode(new PurchaseModel(
                     onlinePurchase.getCustomer(),onlinePurchase.getDate(),
-                    item.getCost(),item.getName()),node);
+                    item.getCost(),item.getName(),item.getAmount()),node);
             }
         }
 

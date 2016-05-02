@@ -10,7 +10,7 @@ public class Item {
     public Item(String cost, String name) {
         this.cost = cost;
         this.name = name;
-        amount = "1";
+        this.amount = "1";
     }
 
     public Item(String cost, String name, String amount) {
@@ -25,5 +25,9 @@ public class Item {
 
     public String getName() {
         return name;
+    }
+
+    public String getAmount() {
+        return amount;
     }
 }

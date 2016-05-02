@@ -8,27 +8,25 @@
 
     <h:panelGroup layout="block" styleClass="result-output-table">
         <h:form>
-            <p:dataTable var="item" value="#{itemsController.onlinePurchases}">
-                <p:column headerText="data">
-                    <h:outputText value="#{item.date}"/>
-                </p:column>
-                <p:column headerText="price">
-                    <h:outputText value="#{item.summary}"/>
-                </p:column>
-            </p:dataTable>
 
-            <p:treeTable value="#{itemsController.onlinePurchases}" var="item">
+            <p:treeTable value="#{itemsController.root}" var="item">
                 <f:facet name="header">
                     Purchases viewer
                 </f:facet>
-                <p:column headerText="Customer">
+                <p:column headerText="Customer" width="15%">
                     <h:outputText value="#{item.customer}" />
                 </p:column>
-                <p:column headerText="Date">
+                <p:column headerText="Name" width="40%">
+                    <h:outputText value="#{item.name}" />
+                </p:column>
+                <p:column headerText="Amount" width="5%">
+                    <h:outputText value="#{item.amount}" />
+                </p:column>
+                <p:column headerText="Date" width="20%">
                     <h:outputText value="#{item.date}" />
                 </p:column>
-                <p:column headerText="Total">
-                    <h:outputText value="#{item.summary}}" />
+                <p:column headerText="Total" width="20%">
+                    <h:outputText value="#{item.summary}" />
                 </p:column>
             </p:treeTable>
         </h:form>
