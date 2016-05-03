@@ -36,6 +36,8 @@ public class AuthorizationBeanImpl {
             Arrays.asList(GmailScopes.GMAIL_READONLY);
     private static Gmail service;
 
+    public static boolean authorized = false;
+
 
     public static void authorize() throws IOException, DecoderException {
 
@@ -52,6 +54,7 @@ public class AuthorizationBeanImpl {
         service = GmailServices.getGmailService(JSON_FACTORY, HTTP_TRANSPORT, DATA_STORE_FACTORY, SCOPES
                 , DATA_STORE_DIR, APPLICATION_NAME);
 
+        authorized = true;
     }
 
     public static List<MessageModel> getMessages() {

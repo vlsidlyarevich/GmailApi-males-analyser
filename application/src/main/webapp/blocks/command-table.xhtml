@@ -2,39 +2,48 @@
         xmlns:h="http://java.sun.com/jsf/html"
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:f="http://java.sun.com/jsf/core"
-        xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+        xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+        xmlns:p="http://primefaces.org/ui">
 
 
     <h:panelGroup layout="block" styleClass="command-table ">
-
-        <h:form>
-            <h:panelGroup layout="block" styleClass="checkbox-div">
-                <h:panelGrid styleClass="search-panel-grid" cellpadding="5" columns="2">
-
-
-                    <h:selectBooleanCheckbox value="#{itemsController.steamCheck}"/>
-                    <h:outputText value="Steam"/>
-
-                    <h:selectBooleanCheckbox value="#{itemsController.ozByCheck}"/>
-                    <h:outputText value="Oz.by"/>
-
-                    <h:selectBooleanCheckbox value="#{itemsController.originCheck}"/>
-                    <h:outputText value="Origin"/>
-
-                </h:panelGrid>
-            </h:panelGroup>
+        <h:form style="height:100%;">
+            <h:panelGrid styleClass="" style="width:100%;height: 100%" cellpadding="5" columns="3"
+                         columnClasses="text-column, checkbox-column, button-column">
 
 
-            <h:panelGroup layout="block" styleClass="buttons-div">
-                <h:panelGrid columns="1" styleClass="buttons-panel-grid">
-                    <h:commandButton value="Analyse" action="#{itemsController.checkCustomers()}"
-                                     styleClass="btn btn-lg btn-success">
-                        <f:ajax execute="@form"/>
-                    </h:commandButton>
-                </h:panelGrid>
+                <h:outputText value="Steam" styleClass="text-label"/>
+                <h:selectBooleanCheckbox value="#{itemsController.steamCheck}"/>
+
+
+                <h:commandButton value="Check" action="#{itemsController.checkCustomers()}"
+                                 styleClass="btn  btn-success">
+                    <f:ajax execute="@form"/>
+                </h:commandButton>
+
+                <h:outputText value="Oz.by" styleClass="text-label"/>
+                <h:selectBooleanCheckbox value="#{itemsController.ozByCheck}"/>
+
+                <h:commandButton value="Reset"
+                                 styleClass="btn  btn-danger ">
+                    <f:ajax execute="@form"/>
+                </h:commandButton>
+
+                <h:outputText value="Origin" styleClass="text-label"/>
+                <h:selectBooleanCheckbox value="#{itemsController.originCheck}"/>
+
+                <h:commandButton value="Result"
+                                 styleClass="btn  btn-success">
+                    <f:ajax execute="@form"/>
+                </h:commandButton>
+
+            </h:panelGrid>
+
+            <h:panelGroup layout="block" styleClass="progress-bar-div">
+                <p:progressBar ajax="true" id="progress_bar" styleClass="my-progress-bar"
+                               value="#{itemsController.progress}"/>
+
             </h:panelGroup>
         </h:form>
-
     </h:panelGroup>
-
 </f:view>

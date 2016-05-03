@@ -29,22 +29,12 @@
         <h:panelGroup layout="block" styleClass="content">
             <h:panelGroup layout="block" styleClass="mails-block-header">
                 <h:panelGroup layout="block" styleClass="mails-block-header-div">
-                    <h:outputText value="Message viewer" styleClass="mails-block-header-label"/>
+                    <h:outputText value="Configuration" styleClass="mails-block-header-label"/>
                 </h:panelGroup>
             </h:panelGroup>
 
-            <h:form>
-                <h:panelGroup layout="block" styleClass="command-panel">
+            <ui:include src="/blocks/command-table.xhtml"/>
 
-
-                    <comp:collapsibleSearchPanel collapsed="#{CollapseController.collapsed}">
-                        <ui:include src="/blocks/command-table.xhtml"/>
-                    </comp:collapsibleSearchPanel>
-
-                </h:panelGroup>
-
-                <ui:include src="/blocks/output-table.xhtml"/>
-            </h:form>
         </h:panelGroup>
 
         <ui:include src="/blocks/footer.xhtml"/>

@@ -8,12 +8,13 @@ import com.mail.hunter.application.business.parsers.impl.SteamParser;
 import com.mail.hunter.application.security.authorization.impl.AuthorizationBeanImpl;
 import com.mail.hunter.application.view.services.TreeTableService;
 import com.mail.hunter.gmail.models.MessageModel;
+import org.apache.commons.codec.DecoderException;
 import org.primefaces.model.TreeNode;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import java.io.UnsupportedEncodingException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +43,8 @@ public class ItemsController {
 
     private ArrayList<OnlinePurchase> onlinePurchases;
 
+    private Integer progress;
+
     public ItemsController() {
         steamCheck = false;
         originCheck = false;
@@ -56,11 +59,13 @@ public class ItemsController {
         ozByParser = new OzByParser();
 
         service = new TreeTableService();
+
+        progress = 0;
     }
 
 
     @PostConstruct
-    public void init() {
+    public void init() throws IOException, DecoderException {
         steamCheck = false;
         originCheck = false;
         ozByCheck = false;
@@ -74,11 +79,21 @@ public class ItemsController {
         ozByParser = new OzByParser();
 
         service = new TreeTableService();
+
+        progress = 0;
     }
 
-    public void checkCustomers() throws UnsupportedEncodingException {
+    public void checkCustomers() throws IOException, DecoderException {
+
+        if(!AuthorizationBeanImpl.authorized){
+            AuthorizationBeanImpl.authorize();
+        }
+
+        progress+=20;
 
         List<MessageModel> messages = AuthorizationBeanImpl.getMessages();
+
+        progress+=30;
 
         for (MessageModel message : messages) {
 
@@ -105,8 +120,19 @@ public class ItemsController {
             }
         }
 
+        progress+=50;
+
         if(onlinePurchases.size() != 0)
             root = service.createNode(onlinePurchases);
+
+        System.out.println("----------");
+    }
+
+    public Integer getProgress() {
+        if(progress>100){
+            progress = 100;
+        }
+        return progress;
     }
 
     public TreeNode getRoot() {
