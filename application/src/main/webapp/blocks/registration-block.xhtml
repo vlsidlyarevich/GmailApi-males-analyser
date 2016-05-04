@@ -20,18 +20,18 @@
             <h:panelGrid columns="1" style="width: 100%;height: 100%;">
                 <h:inputText a:placeholder="Username" id="userNameInput" required="true" value="#{userBean.userName}"
                              styleClass="form-control login-input" requiredMessage="Please enter username"
-                />
+                             autocomplete="off"/>
                 <h:inputSecret a:placeholder="Password" id="userPasswordInput" required="true"
                                value="#{userBean.password}"
                                styleClass="form-control login-input" requiredMessage="Please input password"
-                >
+                               autocomplete="off">
                     <f:validator validatorId="passwordValidator"/>
                     <f:attribute name="confirmPassword" value="#{confirmPassword}"/>
                 </h:inputSecret>
                 <h:inputSecret a:placeholder="Repeat password" id="userPasswordRepeat"
                                styleClass="form-control login-input" required="true"
                                requiredMessage="Please repeat password" binding="#{confirmPassword}"
-                />
+                               autocomplete="off"/>
             </h:panelGrid>
         </h:panelGroup>
 

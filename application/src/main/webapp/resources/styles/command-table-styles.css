@@ -18,10 +18,16 @@
 .button-column{
     width:65%;
 }
+.table-btn{
+    width:55%;
+}
 .progress-bar-div{
     margin-top:6%;
 
 }
 .my-progress-bar{
 
+}
+.ui-progressbar .ui-widget-header {
+    background-color: #5cb85c;
 }

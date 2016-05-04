@@ -13,7 +13,7 @@
 
                     <h:link outcome="index" value="Home" styleClass="nav-link"/>
                     <h:link outcome="login" value="Sign in" styleClass="nav-link"/>
-                    <h:link outcome="mails" value="Mails" styleClass="nav-link" rendered="#{request.isUserInRole('ROLE_USER')}"/>
+                    <h:link outcome="mails" value="Configure" styleClass="nav-link" rendered="#{request.isUserInRole('ROLE_USER')}"/>
                     <h:outputLink rendered="#{request.isUserInRole('ROLE_USER')}" value="#{request.contextPath}/j_spring_security_logout"
                                   styleClass="nav-link">Logout</h:outputLink>
                 </h:panelGroup>

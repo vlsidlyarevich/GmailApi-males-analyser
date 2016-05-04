@@ -37,6 +37,7 @@ public class ItemsController {
     private boolean steamCheck;
     private boolean originCheck;
     private boolean ozByCheck;
+    private boolean checked;
     private List<OnlinePurchase> steamMessages;
     private List<OnlinePurchase> originMessages;
     private List<OnlinePurchase> ozByMessages;
@@ -61,6 +62,8 @@ public class ItemsController {
         service = new TreeTableService();
 
         progress = 0;
+
+        checked = false;
     }
 
 
@@ -81,6 +84,8 @@ public class ItemsController {
         service = new TreeTableService();
 
         progress = 0;
+
+        checked = false;
     }
 
     public void checkCustomers() throws IOException, DecoderException {
@@ -118,6 +123,9 @@ public class ItemsController {
                     ozByMessages.add(onlinePurchase);
                 }
             }
+            if(onlinePurchases.size()>0){
+                checked = true;
+            }
         }
 
         progress+=50;
@@ -125,14 +133,25 @@ public class ItemsController {
         if(onlinePurchases.size() != 0)
             root = service.createNode(onlinePurchases);
 
-        System.out.println("----------");
     }
+
+    public void reset(){
+        this.originCheck = false;
+        this.steamCheck = false;
+        this.ozByCheck = false;
+        progress = 0;
+    }
+
 
     public Integer getProgress() {
         if(progress>100){
             progress = 100;
         }
         return progress;
+    }
+
+    public boolean isChecked() {
+        return checked;
     }
 
     public TreeNode getRoot() {

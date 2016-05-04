@@ -17,32 +17,33 @@
 
 
                 <h:commandButton value="Check" action="#{itemsController.checkCustomers()}"
-                                 styleClass="btn  btn-success">
-                    <f:ajax execute="@form"/>
+                                 styleClass="btn  btn-success table-btn">
+                    <f:ajax />
                 </h:commandButton>
 
                 <h:outputText value="Oz.by" styleClass="text-label"/>
                 <h:selectBooleanCheckbox value="#{itemsController.ozByCheck}"/>
 
-                <h:commandButton value="Reset"
-                                 styleClass="btn  btn-danger ">
-                    <f:ajax execute="@form"/>
+                <h:commandButton value="Reset" action="#{itemsController.reset()}"
+                                 styleClass="btn  btn-danger table-btn">
+                    <f:ajax render="@form"/>
                 </h:commandButton>
 
                 <h:outputText value="Origin" styleClass="text-label"/>
                 <h:selectBooleanCheckbox value="#{itemsController.originCheck}"/>
 
-                <h:commandButton value="Result"
-                                 styleClass="btn  btn-success">
-                    <f:ajax execute="@form"/>
-                </h:commandButton>
+                <h:button value="Result"
+                                 styleClass="btn  btn-success table-btn"
+                                 disabled="#{!itemsController.checked}"
+                                 outcome="result">
+                </h:button>
 
             </h:panelGrid>
 
             <h:panelGroup layout="block" styleClass="progress-bar-div">
                 <p:progressBar ajax="true" id="progress_bar" styleClass="my-progress-bar"
                                value="#{itemsController.progress}"/>
-
+                <p:poll interval="1" update="progress_bar"/>
             </h:panelGroup>
         </h:form>
     </h:panelGroup>
