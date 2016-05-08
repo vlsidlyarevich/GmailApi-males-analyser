@@ -6,10 +6,23 @@
 .content {
     min-width: 500px;
     min-height: 500px;
-    height: 750px;
-    width: 85%;
+    height: 650px;
+    width: 60%;
     margin: 0 auto;
     margin-top: 5%;
     background-color: rgba(247, 244, 244, 0.75);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.totals-block{
+    margin-top: 3%;
+    width: 100%;
+    text-align: center;
+}
+.totals-column{
+    width:30%;
+    text-align: center;
+}
+.totals-panel{
+    width: 100%;
 }

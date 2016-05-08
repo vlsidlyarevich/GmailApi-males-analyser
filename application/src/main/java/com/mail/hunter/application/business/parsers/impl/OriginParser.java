@@ -1,9 +1,11 @@
 package com.mail.hunter.application.business.parsers.impl;
 
 
+import com.mail.hunter.application.business.models.Customer;
 import com.mail.hunter.application.business.models.Item;
 import com.mail.hunter.application.business.models.OnlinePurchase;
 import com.mail.hunter.application.business.parsers.Parser;
+import com.mail.hunter.application.business.services.CostService;
 import com.mail.hunter.gmail.models.MessageModel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -35,10 +37,12 @@ public class OriginParser implements Parser {
             String dateValue = date.text();
 
             ArrayList<Item> items = new ArrayList<>();
-            items.add(new Item(costValue, productName));
+            items.add(new Item(CostService.parseOrigin(costValue), productName));
 
 
-            return new OnlinePurchase(dateValue, items, costValue,"www.origin.com");
+            return new OnlinePurchase(dateValue, items, CostService.parseOrigin(costValue),
+                    Customer.ORIGIN);
+
         }catch (Exception e){
             System.out.println(e.toString());
         }

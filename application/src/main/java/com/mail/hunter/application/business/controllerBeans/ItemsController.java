@@ -1,5 +1,6 @@
 package com.mail.hunter.application.business.controllerBeans;
 
+import com.mail.hunter.application.business.models.Item;
 import com.mail.hunter.application.business.models.OnlinePurchase;
 import com.mail.hunter.application.business.parsers.Parser;
 import com.mail.hunter.application.business.parsers.impl.OriginParser;
@@ -94,6 +95,8 @@ public class ItemsController {
             AuthorizationBeanImpl.authorize();
         }
 
+        progress = 0;
+
         progress+=20;
 
         List<MessageModel> messages = AuthorizationBeanImpl.getMessages();
@@ -139,6 +142,8 @@ public class ItemsController {
         this.originCheck = false;
         this.steamCheck = false;
         this.ozByCheck = false;
+        checked = false;
+        onlinePurchases.clear();
         progress = 0;
     }
 
@@ -149,6 +154,76 @@ public class ItemsController {
         }
         return progress;
     }
+
+    public String calculateOzTotal(){
+
+        Double result = 0.0;
+        for(OnlinePurchase onlinePurchase : this.ozByMessages){
+            result+=onlinePurchase.getSummary().getAmount();
+        }
+
+        return result + " BYR";
+    }
+
+    public Integer calculateOzItems(){
+
+        Integer result = 0;
+        for(OnlinePurchase onlinePurchase : this.ozByMessages){
+            for(Item item : onlinePurchase.getItems()){
+                result+=item.getIntAmount();
+            }
+        }
+
+        return result;
+    }
+
+
+    public String calculateSteamTotal(){
+
+        Double result = 0.0;
+        for(OnlinePurchase onlinePurchase : this.steamMessages){
+            result+=onlinePurchase.getSummary().getAmount();
+        }
+
+        return result + " USD";
+    }
+
+    public Integer calculateSteamItems(){
+
+        Integer result = 0;
+        for(OnlinePurchase onlinePurchase : this.steamMessages){
+            for(Item item : onlinePurchase.getItems()){
+                result+=item.getIntAmount();
+            }
+        }
+
+        return result;
+    }
+
+
+    public String calculateOriginTotal(){
+
+        Double result = 0.0;
+        for(OnlinePurchase onlinePurchase : this.originMessages){
+            result+=onlinePurchase.getSummary().getAmount();
+        }
+
+        return result + " RUB";
+    }
+
+    public Integer calculateOriginItems(){
+
+        Integer result = 0;
+        for(OnlinePurchase onlinePurchase : this.originMessages){
+            for(Item item : onlinePurchase.getItems()){
+                result+=item.getIntAmount();
+            }
+        }
+
+        return result;
+    }
+
+
 
     public boolean isChecked() {
         return checked;

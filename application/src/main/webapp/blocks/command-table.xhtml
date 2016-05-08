@@ -35,7 +35,8 @@
                 <h:button value="Result"
                                  styleClass="btn  btn-success table-btn"
                                  disabled="#{!itemsController.checked}"
-                                 outcome="result">
+                                 outcome="result"
+                                 id="result">
                 </h:button>
 
             </h:panelGrid>
@@ -43,7 +44,7 @@
             <h:panelGroup layout="block" styleClass="progress-bar-div">
                 <p:progressBar ajax="true" id="progress_bar" styleClass="my-progress-bar"
                                value="#{itemsController.progress}"/>
-                <p:poll interval="1" update="progress_bar"/>
+                <p:poll interval="1" update="progress_bar result"/>
             </h:panelGroup>
         </h:form>
     </h:panelGroup>

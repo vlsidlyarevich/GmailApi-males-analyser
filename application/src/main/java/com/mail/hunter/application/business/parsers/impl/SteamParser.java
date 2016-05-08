@@ -1,9 +1,11 @@
 package com.mail.hunter.application.business.parsers.impl;
 
 
+import com.mail.hunter.application.business.models.Customer;
 import com.mail.hunter.application.business.models.Item;
 import com.mail.hunter.application.business.models.OnlinePurchase;
 import com.mail.hunter.application.business.parsers.Parser;
+import com.mail.hunter.application.business.services.CostService;
 import com.mail.hunter.gmail.models.MessageModel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -30,10 +32,11 @@ public class SteamParser implements Parser {
 
 
             ArrayList<Item> items = new ArrayList<>();
-            items.add(new Item(costValue, productName));
+            items.add(new Item(CostService.parseSteam(costValue), productName));
 
 
-            return new OnlinePurchase(dateValue, items, costValue,"store.steampowered.com");
+            return new OnlinePurchase(dateValue, items, CostService.parseSteam(costValue),
+                    Customer.STEAM);
         }
         catch (Exception e){
             System.out.println(e.toString());

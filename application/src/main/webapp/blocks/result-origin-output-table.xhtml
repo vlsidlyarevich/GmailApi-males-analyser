@@ -1,0 +1,37 @@
+<f:view
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:p="http://primefaces.org/ui">
+
+
+    <h:panelGroup layout="block" styleClass="result-output-table">
+        <h:form>
+
+            <p:dataTable paginator="true" paginatorTemplate="{CurrentPageReport}  {FirstPageLink}
+             {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="4,6" value="#{itemsController.originMessages}" var="item">
+                <p:column>
+                    <p:accordionPanel>
+                        <p:tab title="#{item.date}">
+                            <p:dataTable value="#{item.items}" var="innerItem">
+                                <p:column>
+                                    <h:outputText value="#{innerItem.name}"/>
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="#{innerItem.amount}"/>
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="#{innerItem.cost.stringAmount}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </p:tab>
+                    </p:accordionPanel>
+                </p:column>
+
+            </p:dataTable>
+
+        </h:form>
+    </h:panelGroup>
+</f:view>

@@ -1,9 +1,9 @@
 package com.mail.hunter.application.business.parsers.impl;
 
 
-import com.mail.hunter.application.business.models.Item;
-import com.mail.hunter.application.business.models.OnlinePurchase;
+import com.mail.hunter.application.business.models.*;
 import com.mail.hunter.application.business.parsers.Parser;
+import com.mail.hunter.application.business.services.CostService;
 import com.mail.hunter.gmail.models.MessageModel;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -27,7 +27,7 @@ public class OzByParser implements Parser {
             for (int i = 1; i < productRows.select("tr").get(5).select("tr").size(); i++) {
                 String name = productRows.select("tr").get(5).select("tr").get(i).select("td").get(0).text();
                 String amount = productRows.select("tr").get(5).select("tr").get(i).select("td").get(1).text();
-                items.add(new Item("-", name, amount));
+                items.add(new Item(new Cost(Value.UNDEFINED,0.0), name, amount));
             }
 
             Element valueRows = outerTable.select("tr").get(26);
@@ -37,7 +37,8 @@ public class OzByParser implements Parser {
             String dateValue = doc.text().substring(doc.text().indexOf("Дата:") + 5,
                     doc.text().indexOf("Тема")).trim();
 
-            return new OnlinePurchase(dateValue, items, costValue,"oz.by");
+            return new OnlinePurchase(dateValue, items, CostService.parseOz(costValue),
+                    Customer.OZ);
         }catch (Exception e){
             System.out.println(e.toString());
         }

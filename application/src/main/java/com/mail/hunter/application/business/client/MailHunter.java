@@ -58,7 +58,11 @@ public class MailHunter {
         SteamParser parser1 = new SteamParser();
         OzByParser parser2 = new OzByParser();
 
-        parser2.parseMessage(messageModels.get(1));
+        for(MessageModel messageModel : messageModels){
+           if( messageModel.getHtmlBody() != null && messageModel.getHtmlBody().contains("oz@oz.by")){
+                parser2.parseMessage(messageModel);
+            }
+        }
     }
 
 

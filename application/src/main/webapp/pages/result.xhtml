@@ -5,7 +5,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:p="http://primefaces.org/ui">
 
 
 <h:head>
@@ -30,7 +31,184 @@
     <h:panelGroup layout="block" styleClass="wrapper">
         <ui:include src="/blocks/header.xhtml"/>
         <h:panelGroup layout="block" styleClass="content">
-            <ui:include src="/blocks/result-output-table.xhtml"/>
+
+            <p:tabView>
+                <p:tab title="Total">
+                    <h:panelGrid columns="2" cellpadding="10">
+                        <h:outputText
+                                value="The story begins as Don Vito Corleone..."/>
+                    </h:panelGrid>
+                </p:tab>
+
+
+                <p:tab title="Steam" rendered="#{itemsController.steamMessages.size() > 0}">
+                    <h:outputText value="Totals" style="font-size: xx-large"/>
+
+                    <h:panelGroup layout="block" styleClass="totals-block">
+                        <h:panelGrid columns="3" cellpadding="10"
+                                     cellspacing="15"
+                                     columnClasses="totals-column, totals-column,
+                                     totals-column" styleClass="totals-panel">
+                            <h:column>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h:outputText styleClass="panel-title"
+                                                      value="Money Spent"
+                                                      style="font-size: x-large"/>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h:outputText value="#{itemsController.calculateSteamTotal()}"
+                                                      style="font-size: large"/>
+                                    </div>
+                                </div>
+                            </h:column>
+
+                            <h:column>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h:outputText styleClass="panel-title"
+                                                      value="Purchases"
+                                                      style="font-size: x-large"/>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h:outputText value="#{itemsController.steamMessages.size()}"
+                                                      style="font-size: large"/>
+                                    </div>
+                                </div>
+
+                            </h:column>
+
+                            <h:column>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h:outputText styleClass="panel-title"
+                                                      value="Items"
+                                                      style="font-size: x-large"/>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h:outputText value="#{itemsController.calculateSteamItems()}"
+                                                      style="font-size: large"/>
+                                    </div>
+                                </div>
+                            </h:column>
+
+                        </h:panelGrid>
+                    </h:panelGroup>
+                    <ui:include src="/blocks/result-steam-output-table.xhtml"/>
+                </p:tab>
+
+
+                <p:tab title="Oz" rendered="#{itemsController.ozByMessages.size() > 0}">
+                    <h:outputText value="Totals" style="font-size: xx-large"/>
+
+                    <h:panelGroup layout="block" styleClass="totals-block">
+                        <h:panelGrid columns="3" cellpadding="10"
+                                     columnClasses="totals-column, totals-column,
+                                     totals-column" styleClass="totals-panel">
+                            <h:column>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h:outputText styleClass="panel-title"
+                                                      value="Money Spent"
+                                                      style="font-size: x-large"/>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h:outputText value="#{itemsController.calculateOzTotal()}"
+                                                      style="font-size: large"/>
+                                    </div>
+                                </div>
+                            </h:column>
+
+                            <h:column>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h:outputText styleClass="panel-title"
+                                                      value="Purchases"
+                                                      style="font-size: x-large"/>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h:outputText value="#{itemsController.ozByMessages.size()}"
+                                                      style="font-size: large"/>
+                                    </div>
+                                </div>
+
+                            </h:column>
+
+                            <h:column>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h:outputText styleClass="panel-title"
+                                                      value="Items"
+                                                      style="font-size: x-large"/>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h:outputText value="#{itemsController.calculateOzItems()}"
+                                                      style="font-size: large"/>
+                                    </div>
+                                </div>
+                            </h:column>
+                        </h:panelGrid>
+                    </h:panelGroup>
+                    <ui:include src="/blocks/result-oz-output-table.xhtml"/>
+                </p:tab>
+
+
+                <p:tab title="Origin" rendered="#{itemsController.originMessages.size() > 0}">
+                    <h:outputText value="Totals" style="font-size: xx-large"/>
+
+                    <h:panelGroup layout="block" styleClass="totals-block">
+                        <h:panelGrid columns="3" cellpadding="10"
+                                     columnClasses="totals-column, totals-column,
+                                     totals-column" styleClass="totals-panel">
+                            <h:column>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h:outputText styleClass="panel-title"
+                                                      value="Money Spent"
+                                                      style="font-size: x-large"/>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h:outputText value="#{itemsController.calculateOriginTotal()}"
+                                                      style="font-size: large"/>
+                                    </div>
+                                </div>
+                            </h:column>
+
+                            <h:column>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h:outputText styleClass="panel-title"
+                                                      value="Purchases"
+                                                      style="font-size: x-large"/>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h:outputText value="#{itemsController.originMessages.size()}"
+                                                      style="font-size: large"/>
+                                    </div>
+                                </div>
+
+                            </h:column>
+
+                            <h:column>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h:outputText styleClass="panel-title"
+                                                      value="Items"
+                                                      style="font-size: x-large"/>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h:outputText value="#{itemsController.calculateOriginItems()}"
+                                                      style="font-size: large"/>
+                                    </div>
+                                </div>
+                            </h:column>
+
+                        </h:panelGrid>
+                    </h:panelGroup>
+                    <ui:include src="/blocks/result-origin-output-table.xhtml"/>
+                </p:tab>
+            </p:tabView>
+
         </h:panelGroup>
         <ui:include src="/blocks/footer.xhtml"/>
     </h:panelGroup>

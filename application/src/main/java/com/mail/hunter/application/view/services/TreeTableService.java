@@ -22,13 +22,16 @@ public class TreeTableService {
 
         for(OnlinePurchase onlinePurchase : onlinePurchases){
             TreeNode node = new DefaultTreeNode(new PurchaseModel(
-                    onlinePurchase.getCustomer(),onlinePurchase.getDate(),
-                    onlinePurchase.getSummary(),"",""),root);
+                    onlinePurchase.getCustomer().getDomain(),onlinePurchase.getDate(),
+                    onlinePurchase.getSummary().getAmount().toString()+" "+
+                    onlinePurchase.getSummary().getValue().getSymbol(),"",""),root);
 
             for(Item item : onlinePurchase.getItems()){
                 TreeNode childNode = new DefaultTreeNode(new PurchaseModel(
-                    onlinePurchase.getCustomer(),onlinePurchase.getDate(),
-                    item.getCost(),item.getName(),item.getAmount()),node);
+                    onlinePurchase.getCustomer().getDomain(),onlinePurchase.getDate(),
+                    item.getCost().getAmount().toString()+" "+
+                        item.getCost().getValue().getSymbol()
+                        ,item.getName(),item.getAmount()),node);
             }
         }
 

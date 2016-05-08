@@ -9,30 +9,14 @@ public class OnlinePurchase implements Serializable,Comparable<OnlinePurchase>  
 
     private String date;
     private List<Item> items;
-    private String summary;
-    private String customer;
+    private Cost summary;
+    private Customer customer;
 
-    public OnlinePurchase(String date, List<Item> items,String summary,String customer) {
-        this.summary = summary;
+    public OnlinePurchase(String date, List<Item> items, Cost summary, Customer customer) {
         this.date = date;
         this.items = items;
+        this.summary = summary;
         this.customer = customer;
-    }
-
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public String getSummary() {
-        return summary;
-    }
-
-    public String getCustomer() {
-        return customer;
     }
 
     @Override
@@ -45,7 +29,7 @@ public class OnlinePurchase implements Serializable,Comparable<OnlinePurchase>  
         if (date != null ? !date.equals(that.date) : that.date != null) return false;
         if (!items.equals(that.items)) return false;
         if (summary != null ? !summary.equals(that.summary) : that.summary != null) return false;
-        return customer != null ? customer.equals(that.customer) : that.customer == null;
+        return customer == that.customer;
 
     }
 
@@ -54,12 +38,29 @@ public class OnlinePurchase implements Serializable,Comparable<OnlinePurchase>  
         int result = date != null ? date.hashCode() : 0;
         result = 31 * result + items.hashCode();
         result = 31 * result + (summary != null ? summary.hashCode() : 0);
-        result = 31 * result + (customer != null ? customer.hashCode() : 0);
+        result = 31 * result + customer.hashCode();
         return result;
     }
 
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public Cost getSummary() {
+        return summary;
+    }
+
+
     @Override
     public int compareTo(OnlinePurchase o) {
-        return this.customer.compareTo(o.getCustomer());
+        return date.compareTo(o.getDate());
     }
 }
