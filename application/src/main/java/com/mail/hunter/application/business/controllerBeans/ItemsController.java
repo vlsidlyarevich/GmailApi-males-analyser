@@ -92,6 +92,11 @@ public class ItemsController {
 
     public void checkCustomers() throws IOException, DecoderException {
 
+        onlinePurchases.clear();
+        ozByMessages.clear();
+        steamMessages.clear();
+        originMessages.clear();
+
         if (!AuthorizationBeanImpl.authorized) {
             AuthorizationBeanImpl.authorize();
         }
