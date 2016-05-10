@@ -5,21 +5,21 @@ package com.mail.hunter.application.business.models;
  */
 public enum Value {
 
-    BYR(1/19000,"руб."),
-    RUB(1/300,"руб."),
-    USD(1,"$"),
-    UNDEFINED(0,"");
+    BYR((1.0/19000),"руб."),
+    RUB((1.0/300),"руб."),
+    USD(1.0,"$"),
+    UNDEFINED(0.0,"");
 
-    Value(double amount,String symbol) {
+    Value(Double amount,String symbol) {
         this.amount = amount;
         this.symbol = symbol;
     }
 
-    private double amount;
+    private Double amount;
 
     private String symbol;
 
-    public double getAmount() {
+    public Double getAmount() {
         return amount;
     }
 

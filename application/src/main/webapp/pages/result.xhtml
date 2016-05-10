@@ -27,14 +27,13 @@
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
 
-            var ozPurchases = document.getElementById('hidden:ozPurchases').value;
-            var steamPurchases = document.getElementById('hidden:steamPurchases').value;
-            var originPurchases = document.getElementById('hidden:originPurchases').value;
+            var ozPurchases = document.getElementById('form:tabView:hidden:ozPurchases').value;
+            var steamPurchases = document.getElementById('form:tabView:hidden:steamPurchases').value;
+            var originPurchases = document.getElementById('form:tabView:hidden:originPurchases').value;
 
-            var ozItems = document.getElementById('hidden:ozPurchases').value;
-            var steamItems = document.getElementById('hidden:steamPurchases').value;
-            var originItems = document.getElementById('hidden:originPurchases').value;
-
+            var ozItems = document.getElementById('form:tabView:hidden:ozItems').value;
+            var steamItems = document.getElementById('form:tabView:hidden:steamItems').value;
+            var originItems = document.getElementById('form:tabView:hidden:originItems').value;
 
 
             var purchasesData = google.visualization.arrayToDataTable([
@@ -44,16 +43,31 @@
                 ['oz.by', parseInt(ozPurchases)]
             ]);
 
+            var itemsData = google.visualization.arrayToDataTable([
+                ['Store', 'Items'],
+                ['steam', parseInt(steamItems)],
+                ['origin', parseInt(originItems)],
+                ['oz.by', parseInt(ozItems)]
+            ]);
+
             var purchasesOptions = {
-                backgroundColor:"none",
-                chartArea:{left:40,width:'100%',height:'75%'},
-                fontSize:20,
+                backgroundColor: "none",
+                chartArea: {width: '100%', height: '75%'},
+                fontSize: 18,
                 title: 'Purchases'
             };
 
+            var itemsOptions = {
+                backgroundColor: "none",
+                chartArea: {width: '100%', height: '75%'},
+                fontSize: 20,
+                title: 'Items'
+            };
             var purchasesChart = new google.visualization.PieChart(document.getElementById('purchasesPiechart'));
+            var itemsChart = new google.visualization.PieChart(document.getElementById('itemsPiechart'));
 
             purchasesChart.draw(purchasesData, purchasesOptions);
+            itemsChart.draw(itemsData, itemsOptions);
         }
     </script>
     <title>Mail Hunter</title>
@@ -63,246 +77,257 @@
 <h:body>
 
     <ui:include src="/blocks/background-slideshow.html"/>
-    <h:panelGroup layout="block" styleClass="wrapper">
+    <h:panelGroup layout="block" styleClass="wrapper" id="wrapper">
         <ui:include src="/blocks/header.xhtml"/>
-        <h:panelGroup layout="block" styleClass="content">
+        <h:panelGroup layout="block" styleClass="content" id="content">
 
-            <p:tabView>
-                <p:tab title="Total">
+            <h:form id="form" style="height:100%;">
+                <p:tabView id="tabView" style="height:100%;">
+                    <p:tab title="Total" id="total">
 
-                    <h:outputText value="Summary" style="font-size: xx-large"/>
+                        <h:outputText value="Summary" style="font-size: xx-large"/>
 
-                    <h:panelGroup layout="block" styleClass="totals-block">
-                        <h:panelGrid columns="3" cellpadding="10"
-                                     cellspacing="15"
-                                     columnClasses="totals-column, totals-column,
+                        <h:panelGroup layout="block" styleClass="totals-block">
+                            <h:panelGrid columns="3" cellpadding="10"
+                                         cellspacing="15"
+                                         columnClasses="totals-column, totals-column,
                                      totals-column" styleClass="totals-panel">
-                            <h:column>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h:outputText styleClass="panel-title"
-                                                      value="Money Spent"
-                                                      style="font-size: x-large"/>
+                                <h:column>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h:outputText styleClass="panel-title"
+                                                          value="Money Spent"
+                                                          style="font-size: x-large"/>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h:outputText value="#{itemsController.calculateTotal()}"
+                                                          style="font-size: large"/>
+                                        </div>
                                     </div>
-                                    <div class="panel-body">
-                                        <h:outputText value="#{itemsController.calculateSteamTotal()}"
-                                                      style="font-size: large"/>
+                                </h:column>
+
+                                <h:column>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h:outputText styleClass="panel-title"
+                                                          value="Purchases"
+                                                          style="font-size: x-large"/>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h:outputText value="#{itemsController.calculateTotalPurchases()}"
+                                                          style="font-size: large"/>
+                                        </div>
                                     </div>
-                                </div>
-                            </h:column>
 
-                            <h:column>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h:outputText styleClass="panel-title"
-                                                      value="Purchases"
-                                                      style="font-size: x-large"/>
+                                </h:column>
+
+                                <h:column>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h:outputText styleClass="panel-title"
+                                                          value="Items"
+                                                          style="font-size: x-large"/>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h:outputText value="#{itemsController.calculateTotalItems()}"
+                                                          style="font-size: large"/>
+                                        </div>
                                     </div>
-                                    <div class="panel-body">
-                                        <h:outputText value="#{itemsController.caclulateTotalPurchases()}"
-                                                      style="font-size: large"/>
-                                    </div>
-                                </div>
+                                </h:column>
 
-                            </h:column>
+                            </h:panelGrid>
+                        </h:panelGroup>
 
-                            <h:column>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h:outputText styleClass="panel-title"
-                                                      value="Items"
-                                                      style="font-size: x-large"/>
-                                    </div>
-                                    <div class="panel-body">
-                                        <h:outputText value="#{itemsController.calculateTotalItems()}"
-                                                      style="font-size: large"/>
-                                    </div>
-                                </div>
-                            </h:column>
-
-                        </h:panelGrid>
-                    </h:panelGroup>
+                        <h:form id="hidden" style="height: 57%">
+                            <h:panelGrid style="width:100%;height: 100%;margin-top: 10%" columns="2">
+                                <h:column>
+                                    <div id="purchasesPiechart" style="width: 100%; height: 100%;"></div>
+                                </h:column>
+                                <h:column>
+                                    <div id="itemsPiechart" style="width: 100%; height: 100%;"></div>
+                                </h:column>
+                            </h:panelGrid>
+                            <h:inputHidden id="ozPurchases" value="#{itemsController.ozByMessages.size()}"/>
+                            <h:inputHidden id="steamPurchases" value="#{itemsController.steamMessages.size()}"/>
+                            <h:inputHidden id="originPurchases" value="#{itemsController.originMessages.size()}"/>
+                            <h:inputHidden id="ozItems" value="#{itemsController.calculateOzItems()}"/>
+                            <h:inputHidden id="steamItems" value="#{itemsController.calculateSteamItems()}"/>
+                            <h:inputHidden id="originItems" value="#{itemsController.calculateOriginItems()}"/>
+                        </h:form>
 
 
-                </p:tab>
+                    </p:tab>
 
 
-                <p:tab title="Steam" rendered="#{itemsController.steamMessages.size() > 0}">
-                    <h:outputText value="Totals" style="font-size: xx-large"/>
+                    <p:tab title="Steam" rendered="#{itemsController.steamMessages.size() > 0}">
+                        <h:outputText value="Totals" style="font-size: xx-large"/>
 
-                    <h:panelGroup layout="block" styleClass="totals-block">
-                        <h:panelGrid columns="3" cellpadding="10"
-                                     cellspacing="15"
-                                     columnClasses="totals-column, totals-column,
+                        <h:panelGroup layout="block" styleClass="totals-block">
+                            <h:panelGrid columns="3" cellpadding="10"
+                                         cellspacing="15"
+                                         columnClasses="totals-column, totals-column,
                                      totals-column" styleClass="totals-panel">
-                            <h:column>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h:outputText styleClass="panel-title"
-                                                      value="Money Spent"
-                                                      style="font-size: x-large"/>
+                                <h:column>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h:outputText styleClass="panel-title"
+                                                          value="Money Spent"
+                                                          style="font-size: x-large"/>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h:outputText value="#{itemsController.calculateSteamTotal()}"
+                                                          style="font-size: large"/>
+                                        </div>
                                     </div>
-                                    <div class="panel-body">
-                                        <h:outputText value="#{itemsController.calculateSteamTotal()}"
-                                                      style="font-size: large"/>
+                                </h:column>
+
+                                <h:column>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h:outputText styleClass="panel-title"
+                                                          value="Purchases"
+                                                          style="font-size: x-large"/>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h:outputText value="#{itemsController.steamMessages.size()}"
+                                                          style="font-size: large"/>
+                                        </div>
                                     </div>
-                                </div>
-                            </h:column>
 
-                            <h:column>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h:outputText styleClass="panel-title"
-                                                      value="Purchases"
-                                                      style="font-size: x-large"/>
+                                </h:column>
+
+                                <h:column>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h:outputText styleClass="panel-title"
+                                                          value="Items"
+                                                          style="font-size: x-large"/>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h:outputText value="#{itemsController.calculateSteamItems()}"
+                                                          style="font-size: large"/>
+                                        </div>
                                     </div>
-                                    <div class="panel-body">
-                                        <h:outputText value="#{itemsController.steamMessages.size()}"
-                                                      style="font-size: large"/>
-                                    </div>
-                                </div>
+                                </h:column>
 
-                            </h:column>
-
-                            <h:column>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h:outputText styleClass="panel-title"
-                                                      value="Items"
-                                                      style="font-size: x-large"/>
-                                    </div>
-                                    <div class="panel-body">
-                                        <h:outputText value="#{itemsController.calculateSteamItems()}"
-                                                      style="font-size: large"/>
-                                    </div>
-                                </div>
-                            </h:column>
-
-                        </h:panelGrid>
-                    </h:panelGroup>
-                    <ui:include src="/blocks/result-steam-output-table.xhtml"/>
-                </p:tab>
+                            </h:panelGrid>
+                        </h:panelGroup>
+                        <ui:include src="/blocks/result-steam-output-table.xhtml"/>
+                    </p:tab>
 
 
-                <p:tab title="Oz" rendered="#{itemsController.ozByMessages.size() > 0}">
-                    <h:outputText value="Totals" style="font-size: xx-large"/>
+                    <p:tab title="Oz" rendered="#{itemsController.ozByMessages.size() > 0}">
+                        <h:outputText value="Totals" style="font-size: xx-large"/>
 
-                    <h:panelGroup layout="block" styleClass="totals-block">
-                        <h:panelGrid columns="3" cellpadding="10"
-                                     columnClasses="totals-column, totals-column,
+                        <h:panelGroup layout="block" styleClass="totals-block">
+                            <h:panelGrid columns="3" cellpadding="10"
+                                         columnClasses="totals-column, totals-column,
                                      totals-column" styleClass="totals-panel">
-                            <h:column>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h:outputText styleClass="panel-title"
-                                                      value="Money Spent"
-                                                      style="font-size: x-large"/>
+                                <h:column>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h:outputText styleClass="panel-title"
+                                                          value="Money Spent"
+                                                          style="font-size: x-large"/>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h:outputText value="#{itemsController.calculateOzTotal()}"
+                                                          style="font-size: large"/>
+                                        </div>
                                     </div>
-                                    <div class="panel-body">
-                                        <h:outputText value="#{itemsController.calculateOzTotal()}"
-                                                      style="font-size: large"/>
+                                </h:column>
+
+                                <h:column>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h:outputText styleClass="panel-title"
+                                                          value="Purchases"
+                                                          style="font-size: x-large"/>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h:outputText value="#{itemsController.onlinePurchases.size()}"
+                                                          style="font-size: large"/>
+                                        </div>
                                     </div>
-                                </div>
-                            </h:column>
 
-                            <h:column>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h:outputText styleClass="panel-title"
-                                                      value="Purchases"
-                                                      style="font-size: x-large"/>
+                                </h:column>
+
+                                <h:column>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h:outputText styleClass="panel-title"
+                                                          value="Items"
+                                                          style="font-size: x-large"/>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h:outputText value="#{itemsController.calculateOzItems()}"
+                                                          style="font-size: large"/>
+                                        </div>
                                     </div>
-                                    <div class="panel-body">
-                                        <h:outputText value="#{itemsController.onlinePurchases.size()}"
-                                                      style="font-size: large"/>
-                                    </div>
-                                </div>
-
-                            </h:column>
-
-                            <h:column>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h:outputText styleClass="panel-title"
-                                                      value="Items"
-                                                      style="font-size: x-large"/>
-                                    </div>
-                                    <div class="panel-body">
-                                        <h:outputText value="#{itemsController.calculateOzItems()}"
-                                                      style="font-size: large"/>
-                                    </div>
-                                </div>
-                            </h:column>
-                        </h:panelGrid>
-                    </h:panelGroup>
-                    <ui:include src="/blocks/result-oz-output-table.xhtml"/>
-                </p:tab>
+                                </h:column>
+                            </h:panelGrid>
+                        </h:panelGroup>
+                        <ui:include src="/blocks/result-oz-output-table.xhtml"/>
+                    </p:tab>
 
 
-                <p:tab title="Origin" rendered="#{itemsController.originMessages.size() > 0}">
-                    <h:outputText value="Totals" style="font-size: xx-large"/>
+                    <p:tab title="Origin" rendered="#{itemsController.originMessages.size() > 0}">
+                        <h:outputText value="Totals" style="font-size: xx-large"/>
 
-                    <h:panelGroup layout="block" styleClass="totals-block">
-                        <h:panelGrid columns="3" cellpadding="10"
-                                     columnClasses="totals-column, totals-column,
+                        <h:panelGroup layout="block" styleClass="totals-block">
+                            <h:panelGrid columns="3" cellpadding="10"
+                                         columnClasses="totals-column, totals-column,
                                      totals-column" styleClass="totals-panel">
-                            <h:column>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h:outputText styleClass="panel-title"
-                                                      value="Money Spent"
-                                                      style="font-size: x-large"/>
+                                <h:column>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h:outputText styleClass="panel-title"
+                                                          value="Money Spent"
+                                                          style="font-size: x-large"/>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h:outputText value="#{itemsController.calculateOriginTotal()}"
+                                                          style="font-size: large"/>
+                                        </div>
                                     </div>
-                                    <div class="panel-body">
-                                        <h:outputText value="#{itemsController.calculateOriginTotal()}"
-                                                      style="font-size: large"/>
-                                    </div>
-                                </div>
-                            </h:column>
+                                </h:column>
 
-                            <h:column>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h:outputText styleClass="panel-title"
-                                                      value="Purchases"
-                                                      style="font-size: x-large"/>
+                                <h:column>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h:outputText styleClass="panel-title"
+                                                          value="Purchases"
+                                                          style="font-size: x-large"/>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h:outputText value="#{itemsController.originMessages.size()}"
+                                                          style="font-size: large"/>
+                                        </div>
                                     </div>
-                                    <div class="panel-body">
-                                        <h:outputText value="#{itemsController.originMessages.size()}"
-                                                      style="font-size: large"/>
+
+                                </h:column>
+
+                                <h:column>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h:outputText styleClass="panel-title"
+                                                          value="Items"
+                                                          style="font-size: x-large"/>
+                                        </div>
+                                        <div class="panel-body">
+                                            <h:outputText value="#{itemsController.calculateOriginItems()}"
+                                                          style="font-size: large"/>
+                                        </div>
                                     </div>
-                                </div>
+                                </h:column>
 
-                            </h:column>
-
-                            <h:column>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h:outputText styleClass="panel-title"
-                                                      value="Items"
-                                                      style="font-size: x-large"/>
-                                    </div>
-                                    <div class="panel-body">
-                                        <h:outputText value="#{itemsController.calculateOriginItems()}"
-                                                      style="font-size: large"/>
-                                    </div>
-                                </div>
-                            </h:column>
-
-                        </h:panelGrid>
-                    </h:panelGroup>
-                    <ui:include src="/blocks/result-origin-output-table.xhtml"/>
-                </p:tab>
-            </p:tabView>
-
-            <h:form id="hidden" style="height: 57%">
-                <h:panelGrid style="width:50%;height: 100%;" columns="2">
-                    <div id="purchasesPiechart" style="width: 100%; height: 100%;"></div>
-                </h:panelGrid>
-                <h:inputHidden id="ozPurchases" value="#{itemsController.ozByMessages.size()}"/>
-                <h:inputHidden id="steamPurchases" value="#{itemsController.steamMessages.size()}"/>
-                <h:inputHidden id="originPurchases" value="#{itemsController.originMessages.size()}"/>
+                            </h:panelGrid>
+                        </h:panelGroup>
+                        <ui:include src="/blocks/result-origin-output-table.xhtml"/>
+                    </p:tab>
+                </p:tabView>
             </h:form>
+
 
         </h:panelGroup>
         <ui:include src="/blocks/footer.xhtml"/>

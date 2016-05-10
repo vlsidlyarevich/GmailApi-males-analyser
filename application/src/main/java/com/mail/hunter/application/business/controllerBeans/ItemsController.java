@@ -16,6 +16,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -144,6 +145,9 @@ public class ItemsController {
         this.ozByCheck = false;
         checked = false;
         onlinePurchases.clear();
+        ozByMessages.clear();
+        steamMessages.clear();
+        originMessages.clear();
         progress = 0;
     }
 
@@ -235,10 +239,34 @@ public class ItemsController {
         return result;
     }
 
-    public Integer caclulateTotalPurchases() {
+    public Integer calculateTotalPurchases() {
         return this.ozByMessages.size() +
                 this.originMessages.size() +
                 this.steamMessages.size();
+    }
+
+    public String calculateTotal(){
+        double result = 0.0;
+        if(steamCheck){
+            for(OnlinePurchase onlinePurchase : steamMessages){
+                result+=onlinePurchase.getSummary().getAmount()*
+                        onlinePurchase.getSummary().getValue().getAmount();
+            }
+        }
+        if(originCheck){
+            for(OnlinePurchase onlinePurchase : originMessages){
+                result+=onlinePurchase.getSummary().getAmount()*
+                        onlinePurchase.getSummary().getValue().getAmount();
+            }
+        }
+        if(ozByCheck){
+            for(OnlinePurchase onlinePurchase : ozByMessages){
+                result+=onlinePurchase.getSummary().getAmount()*
+                        onlinePurchase.getSummary().getValue().getAmount();
+            }
+        }
+
+        return (new DecimalFormat("#.##")).format(result)+" USD";
     }
 
 
