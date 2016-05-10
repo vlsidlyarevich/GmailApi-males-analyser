@@ -91,17 +91,17 @@ public class ItemsController {
 
     public void checkCustomers() throws IOException, DecoderException {
 
-        if(!AuthorizationBeanImpl.authorized){
+        if (!AuthorizationBeanImpl.authorized) {
             AuthorizationBeanImpl.authorize();
         }
 
         progress = 0;
 
-        progress+=20;
+        progress += 20;
 
         List<MessageModel> messages = AuthorizationBeanImpl.getMessages();
 
-        progress+=30;
+        progress += 30;
 
         for (MessageModel message : messages) {
 
@@ -126,19 +126,19 @@ public class ItemsController {
                     ozByMessages.add(onlinePurchase);
                 }
             }
-            if(onlinePurchases.size()>0){
+            if (onlinePurchases.size() > 0) {
                 checked = true;
             }
         }
 
-        progress+=50;
+        progress += 50;
 
-        if(onlinePurchases.size() != 0)
+        if (onlinePurchases.size() != 0)
             root = service.createNode(onlinePurchases);
 
     }
 
-    public void reset(){
+    public void reset() {
         this.originCheck = false;
         this.steamCheck = false;
         this.ozByCheck = false;
@@ -149,28 +149,28 @@ public class ItemsController {
 
 
     public Integer getProgress() {
-        if(progress>100){
+        if (progress > 100) {
             progress = 100;
         }
         return progress;
     }
 
-    public String calculateOzTotal(){
+    public String calculateOzTotal() {
 
         Double result = 0.0;
-        for(OnlinePurchase onlinePurchase : this.ozByMessages){
-            result+=onlinePurchase.getSummary().getAmount();
+        for (OnlinePurchase onlinePurchase : this.ozByMessages) {
+            result += onlinePurchase.getSummary().getAmount();
         }
 
         return result + " BYR";
     }
 
-    public Integer calculateOzItems(){
+    public Integer calculateOzItems() {
 
         Integer result = 0;
-        for(OnlinePurchase onlinePurchase : this.ozByMessages){
-            for(Item item : onlinePurchase.getItems()){
-                result+=item.getIntAmount();
+        for (OnlinePurchase onlinePurchase : this.ozByMessages) {
+            for (Item item : onlinePurchase.getItems()) {
+                result += item.getIntAmount();
             }
         }
 
@@ -178,22 +178,22 @@ public class ItemsController {
     }
 
 
-    public String calculateSteamTotal(){
+    public String calculateSteamTotal() {
 
         Double result = 0.0;
-        for(OnlinePurchase onlinePurchase : this.steamMessages){
-            result+=onlinePurchase.getSummary().getAmount();
+        for (OnlinePurchase onlinePurchase : this.steamMessages) {
+            result += onlinePurchase.getSummary().getAmount();
         }
 
         return result + " USD";
     }
 
-    public Integer calculateSteamItems(){
+    public Integer calculateSteamItems() {
 
         Integer result = 0;
-        for(OnlinePurchase onlinePurchase : this.steamMessages){
-            for(Item item : onlinePurchase.getItems()){
-                result+=item.getIntAmount();
+        for (OnlinePurchase onlinePurchase : this.steamMessages) {
+            for (Item item : onlinePurchase.getItems()) {
+                result += item.getIntAmount();
             }
         }
 
@@ -201,28 +201,45 @@ public class ItemsController {
     }
 
 
-    public String calculateOriginTotal(){
+    public String calculateOriginTotal() {
 
         Double result = 0.0;
-        for(OnlinePurchase onlinePurchase : this.originMessages){
-            result+=onlinePurchase.getSummary().getAmount();
+        for (OnlinePurchase onlinePurchase : this.originMessages) {
+            result += onlinePurchase.getSummary().getAmount();
         }
 
         return result + " RUB";
     }
 
-    public Integer calculateOriginItems(){
+    public Integer calculateOriginItems() {
 
         Integer result = 0;
-        for(OnlinePurchase onlinePurchase : this.originMessages){
-            for(Item item : onlinePurchase.getItems()){
-                result+=item.getIntAmount();
+        for (OnlinePurchase onlinePurchase : this.originMessages) {
+            for (Item item : onlinePurchase.getItems()) {
+                result += item.getIntAmount();
             }
         }
 
         return result;
     }
 
+    public Integer calculateTotalItems() {
+        Integer result = 0;
+        if (steamMessages.size() > 0)
+            result += this.calculateSteamItems();
+        if (originMessages.size() > 0)
+            result += this.calculateOriginItems();
+        if (ozByMessages.size() > 0)
+            result += this.calculateOzItems();
+
+        return result;
+    }
+
+    public Integer caclulateTotalPurchases() {
+        return this.ozByMessages.size() +
+                this.originMessages.size() +
+                this.steamMessages.size();
+    }
 
 
     public boolean isChecked() {
@@ -272,4 +289,6 @@ public class ItemsController {
     public ArrayList<OnlinePurchase> getOnlinePurchases() {
         return onlinePurchases;
     }
+
+
 }

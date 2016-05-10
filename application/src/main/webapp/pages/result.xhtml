@@ -21,6 +21,41 @@
     <h:outputStylesheet library="styles" name="footer-styles.css"/>
     <h:outputStylesheet library="styles" name="header-styles.css"/>
     <h:outputStylesheet library="styles" name="result-output-table-styles.css"/>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages': ['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+
+            var ozPurchases = document.getElementById('hidden:ozPurchases').value;
+            var steamPurchases = document.getElementById('hidden:steamPurchases').value;
+            var originPurchases = document.getElementById('hidden:originPurchases').value;
+
+            var ozItems = document.getElementById('hidden:ozPurchases').value;
+            var steamItems = document.getElementById('hidden:steamPurchases').value;
+            var originItems = document.getElementById('hidden:originPurchases').value;
+
+
+
+            var purchasesData = google.visualization.arrayToDataTable([
+                ['Store', 'Purchases'],
+                ['steam', parseInt(steamPurchases)],
+                ['origin', parseInt(originPurchases)],
+                ['oz.by', parseInt(ozPurchases)]
+            ]);
+
+            var purchasesOptions = {
+                backgroundColor:"none",
+                chartArea:{left:40,width:'100%',height:'75%'},
+                fontSize:20,
+                title: 'Purchases'
+            };
+
+            var purchasesChart = new google.visualization.PieChart(document.getElementById('purchasesPiechart'));
+
+            purchasesChart.draw(purchasesData, purchasesOptions);
+        }
+    </script>
     <title>Mail Hunter</title>
 </h:head>
 
@@ -34,10 +69,61 @@
 
             <p:tabView>
                 <p:tab title="Total">
-                    <h:panelGrid columns="2" cellpadding="10">
-                        <h:outputText
-                                value="The story begins as Don Vito Corleone..."/>
-                    </h:panelGrid>
+
+                    <h:outputText value="Summary" style="font-size: xx-large"/>
+
+                    <h:panelGroup layout="block" styleClass="totals-block">
+                        <h:panelGrid columns="3" cellpadding="10"
+                                     cellspacing="15"
+                                     columnClasses="totals-column, totals-column,
+                                     totals-column" styleClass="totals-panel">
+                            <h:column>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h:outputText styleClass="panel-title"
+                                                      value="Money Spent"
+                                                      style="font-size: x-large"/>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h:outputText value="#{itemsController.calculateSteamTotal()}"
+                                                      style="font-size: large"/>
+                                    </div>
+                                </div>
+                            </h:column>
+
+                            <h:column>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h:outputText styleClass="panel-title"
+                                                      value="Purchases"
+                                                      style="font-size: x-large"/>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h:outputText value="#{itemsController.caclulateTotalPurchases()}"
+                                                      style="font-size: large"/>
+                                    </div>
+                                </div>
+
+                            </h:column>
+
+                            <h:column>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h:outputText styleClass="panel-title"
+                                                      value="Items"
+                                                      style="font-size: x-large"/>
+                                    </div>
+                                    <div class="panel-body">
+                                        <h:outputText value="#{itemsController.calculateTotalItems()}"
+                                                      style="font-size: large"/>
+                                    </div>
+                                </div>
+                            </h:column>
+
+                        </h:panelGrid>
+                    </h:panelGroup>
+
+
                 </p:tab>
 
 
@@ -127,7 +213,7 @@
                                                       style="font-size: x-large"/>
                                     </div>
                                     <div class="panel-body">
-                                        <h:outputText value="#{itemsController.ozByMessages.size()}"
+                                        <h:outputText value="#{itemsController.onlinePurchases.size()}"
                                                       style="font-size: large"/>
                                     </div>
                                 </div>
@@ -209,9 +295,17 @@
                 </p:tab>
             </p:tabView>
 
+            <h:form id="hidden" style="height: 57%">
+                <h:panelGrid style="width:50%;height: 100%;" columns="2">
+                    <div id="purchasesPiechart" style="width: 100%; height: 100%;"></div>
+                </h:panelGrid>
+                <h:inputHidden id="ozPurchases" value="#{itemsController.ozByMessages.size()}"/>
+                <h:inputHidden id="steamPurchases" value="#{itemsController.steamMessages.size()}"/>
+                <h:inputHidden id="originPurchases" value="#{itemsController.originMessages.size()}"/>
+            </h:form>
+
         </h:panelGroup>
         <ui:include src="/blocks/footer.xhtml"/>
     </h:panelGroup>
-
 </h:body>
 </html>
